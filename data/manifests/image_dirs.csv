@@ -1,0 +1,95 @@
+dir,n_images,size_bytes,dataset_ids
+data/raw/plant_health/plantdoc/PlantDoc-Dataset,1,700316,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Apple Scab Leaf,10,1485462,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Apple leaf,9,8050226,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Apple rust leaf,10,8884641,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Bell_pepper leaf,8,1060742,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Bell_pepper leaf spot,9,1169451,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Blueberry leaf,11,4435856,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Cherry leaf,10,3102573,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Corn Gray leaf spot,4,1755411,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Corn leaf blight,12,4670594,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Corn rust leaf,10,1146945,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Peach leaf,9,1227267,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Potato leaf early blight,8,2345104,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Potato leaf late blight,8,480201,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Raspberry leaf,7,998727,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Soyabean leaf,8,2567748,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Squash Powdery mildew leaf,6,3327715,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Strawberry leaf,8,1376999,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Tomato Early blight leaf,9,3382847,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Tomato Septoria leaf spot,11,3370020,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Tomato leaf,8,3368854,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Tomato leaf bacterial spot,9,714826,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Tomato leaf late blight,10,3471700,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Tomato leaf mosaic virus,10,5136242,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Tomato leaf yellow virus,6,707447,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/Tomato mold leaf,6,399631,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/grape leaf,12,3075340,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/test/grape leaf black rot,8,1754325,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Apple Scab Leaf,83,23710872,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Apple leaf,82,26506970,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Apple rust leaf,78,37109681,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Bell_pepper leaf,53,17031735,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Bell_pepper leaf spot,62,20895182,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Blueberry leaf,104,58104008,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Cherry leaf,47,29334882,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Corn Gray leaf spot,64,14679470,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Corn leaf blight,179,62514940,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Corn rust leaf,106,45758552,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Peach leaf,102,38164171,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight,108,27956101,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Potato leaf late blight,97,30238160,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Raspberry leaf,112,43249166,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Soyabean leaf,57,34691527,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Squash Powdery mildew leaf,124,65358808,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Strawberry leaf,88,54967576,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf,79,22399878,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Tomato Septoria leaf spot,140,51484293,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Tomato leaf,55,38368353,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Tomato leaf bacterial spot,101,26512307,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Tomato leaf late blight,101,40174692,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Tomato leaf mosaic virus,44,5125187,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Tomato leaf yellow virus,70,16379892,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Tomato mold leaf,85,18927491,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/Tomato two spotted spider mites leaf,2,239238,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/grape leaf,57,47585796,P30
+data/raw/plant_health/plantdoc/PlantDoc-Dataset/train/grape leaf black rot,56,24504731,P30
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Apple___Apple_scab,630,8780942,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Apple___Black_rot,621,11609043,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Apple___Cedar_apple_rust,275,2856481,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Apple___healthy,1645,23760264,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Blueberry___healthy,1502,26546487,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Cherry_(including_sour)___Powdery_mildew,1052,11326976,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Cherry_(including_sour)___healthy,854,14071811,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot,513,8231675,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Corn_(maize)___Common_rust_,1192,16884275,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Corn_(maize)___Northern_Leaf_Blight,985,13775445,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Corn_(maize)___healthy,1162,13338262,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Grape___Black_rot,1180,19356297,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Grape___Esca_(Black_Measles),1383,27207185,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Grape___Leaf_blight_(Isariopsis_Leaf_Spot),1076,19822254,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Grape___healthy,423,6293585,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Orange___Haunglongbing_(Citrus_greening),5507,60980091,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Peach___Bacterial_spot,2297,29818661,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Peach___healthy,360,5740694,P29
+"data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Pepper,_bell___Bacterial_spot",997,18080528,P29
+"data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Pepper,_bell___healthy",1478,24747512,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Potato___Early_blight,1000,19933286,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Potato___Late_blight,1000,16464925,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Potato___healthy,152,3042990,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Raspberry___healthy,371,6932923,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Soybean___healthy,5090,91594126,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Squash___Powdery_mildew,1835,31590644,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Strawberry___Leaf_scorch,1109,21099032,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Strawberry___healthy,456,8949460,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Tomato___Bacterial_spot,2127,27414469,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Tomato___Early_blight,1000,15204946,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Tomato___Late_blight,1909,25705654,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Tomato___Leaf_Mold,952,14980904,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Tomato___Septoria_leaf_spot,1771,30957643,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Tomato___Spider_mites Two-spotted_spider_mite,1676,33212858,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Tomato___Target_Spot,1404,28472326,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Tomato___Tomato_Yellow_Leaf_Curl_Virus,5357,69606152,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Tomato___Tomato_mosaic_virus,373,7078177,P29
+data/raw/plant_health/plantvillage/PlantVillage-Dataset/raw/color/Tomato___healthy,1591,35316386,P29

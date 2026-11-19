@@ -1,0 +1,179 @@
+{
+ "generated": "2026-11-13T09:41:01+00:00",
+ "overall": 32.6,
+ "data": 54.3,
+ "models": 0.0,
+ "model_scores": {
+  "M1a": 0.0,
+  "M1b": 0.0,
+  "M2": 0.0,
+  "M3": 0.0,
+  "M4": 0.0,
+  "M5": 0.0,
+  "M6": 0.0
+ },
+ "modules": {
+  "Monitor": {
+   "data": 78.0,
+   "models": 0.0,
+   "overall": 46.8,
+   "blockers": [
+    "H26 Sentinel-2 SR harmonized [MISSING (ACCESS RESTRICTED)]",
+    "H27 Sentinel-1 GRD [MISSING (ACCESS RESTRICTED)]"
+   ]
+  },
+  "Predict": {
+   "data": 59.8,
+   "models": 0.0,
+   "overall": 35.9,
+   "blockers": [
+    "G24 ECMWF sub-seasonal forecasts + reforecasts [MISSING (ACCESS RESTRICTED)]",
+    "G25 IMD extended-range forecasts (archive) [MISSING]",
+    "F19 DES district crop APY statistics (Maharashtra) [PRESENT BUT INCOMPLETE]",
+    "F23 Maharashtra crop calendar (structured) [MISSING]"
+   ]
+  },
+  "Soil Intelligence": {
+   "data": 63.0,
+   "models": null,
+   "overall": 63.0,
+   "blockers": [
+    "D15 NBSS&LUP soil resource maps / Bhoomi Geoportal [MISSING]",
+    "D16 Soil Health Card lab data (pH, EC, OC, NPK, S, micronutrients) [MISSING]"
+   ]
+  },
+  "Crop Advisor": {
+   "data": 43.7,
+   "models": 0.0,
+   "overall": 26.2,
+   "blockers": [
+    "F19 DES district crop APY statistics (Maharashtra) [PRESENT BUT INCOMPLETE]",
+    "F21 ICAR / SAU (MPKV, PDKV, VNMKV, DBSKKV) package of practices [MISSING]",
+    "F22 FAO crop water information (Kc, stages, root depth, Ky) [MISSING]",
+    "F23 Maharashtra crop calendar (structured) [MISSING]",
+    "D16 Soil Health Card lab data (pH, EC, OC, NPK, S, micronutrients) [MISSING]",
+    "P34 Organic / natural farming references (NCOF, NMNF) [MISSING]"
+   ]
+  },
+  "Plant Doctor": {
+   "data": 73.5,
+   "models": 0.0,
+   "overall": 44.1,
+   "blockers": [
+    "P31 IP102 insect pest dataset [MISSING]"
+   ]
+  },
+  "Farm Simulator": {
+   "data": 66.9,
+   "models": null,
+   "overall": 66.9,
+   "blockers": [
+    "S35c AquaCrop calibration/validation data for Maharashtra crops [MISSING]",
+    "F22 FAO crop water information (Kc, stages, root depth, Ky) [MISSING]",
+    "F23 Maharashtra crop calendar (structured) [MISSING]"
+   ]
+  }
+ },
+ "changes": [
+  [
+   "A1",
+   "MISSING (ACCESS RESTRICTED)",
+   "PRESENT BUT NEEDS PREPROCESSING"
+  ],
+  [
+   "A2",
+   "MISSING (ACCESS RESTRICTED)",
+   "PRESENT BUT NEEDS PREPROCESSING"
+  ],
+  [
+   "A3",
+   "MISSING (ACCESS RESTRICTED)",
+   "PRESENT BUT NEEDS PREPROCESSING"
+  ],
+  [
+   "A4",
+   "MISSING (ACCESS RESTRICTED)",
+   "PRESENT AND VALID"
+  ],
+  [
+   "B5",
+   "MISSING",
+   "PRESENT AND VALID"
+  ],
+  [
+   "B6",
+   "PRESENT BUT INVALID",
+   "PRESENT AND VALID"
+  ],
+  [
+   "B7",
+   "MISSING",
+   "PRESENT BUT NEEDS PREPROCESSING"
+  ],
+  [
+   "B8",
+   "MISSING",
+   "PRESENT AND VALID"
+  ],
+  [
+   "B9",
+   "MISSING (ACCESS RESTRICTED)",
+   "PRESENT BUT NEEDS PREPROCESSING"
+  ],
+  [
+   "C10",
+   "MISSING (ACCESS RESTRICTED)",
+   "PRESENT BUT NEEDS PREPROCESSING"
+  ],
+  [
+   "D14",
+   "MISSING",
+   "PRESENT BUT NEEDS PREPROCESSING"
+  ],
+  [
+   "D14b",
+   "MISSING",
+   "PRESENT AND VALID"
+  ],
+  [
+   "E17",
+   "MISSING",
+   "PRESENT AND VALID"
+  ],
+  [
+   "E18a",
+   "MISSING",
+   "PRESENT AND VALID"
+  ],
+  [
+   "P29",
+   "MISSING",
+   "PRESENT AND VALID"
+  ],
+  [
+   "P30",
+   "MISSING",
+   "PRESENT AND VALID"
+  ],
+  [
+   "P32",
+   "MISSING",
+   "PRESENT BUT NEEDS PREPROCESSING"
+  ],
+  [
+   "P33",
+   "MISSING",
+   "PRESENT BUT NEEDS PREPROCESSING"
+  ],
+  [
+   "S35b",
+   "MISSING",
+   "PRESENT AND VALID"
+  ],
+  [
+   "X1",
+   "PRESENT BUT INVALID",
+   "MISSING"
+  ]
+ ]
+}

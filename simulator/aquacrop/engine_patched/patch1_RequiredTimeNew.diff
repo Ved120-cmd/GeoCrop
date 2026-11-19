@@ -1,0 +1,12 @@
+--- "official_src/python source code/AquaCrop73_src/src/modules/simul.py"	2026-11-12 18:43:40.491496100 +0530
++++ engine_patched/src/modules/simul.py	2026-11-19 15:37:51.631963000 +0530
+@@ -3717,7 +3717,8 @@
+         GetCCiPrev(),
+         GetCrop_CCoAdjusted(),
+         CCxSF,
+-        CGCadjusted
++        CGCadjusted,
++        VirtualTimeCC  # GEOCROP PATCH 1: argument missing in the official 7.3 Python release
+     )
+ 
+     # 2. Get CCxadjusted (reached at end of stretched crop development)

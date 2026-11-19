@@ -1,0 +1,70 @@
+# ---- Secrets & local config ------------------------------------------------
+.env
+.env.*
+!.env.example
+.npmrc
+.claude/settings.local.json
+
+# ---- Python ------------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# ---- Node / frontend (frontend/.gitignore covers the rest) -------------------
+node_modules/
+frontend/dist/
+
+# ---- Database (portable PostgreSQL data dir + logs) --------------------------
+db/pgdata/
+db/*.log
+
+# ---- Data: large, regenerable from official sources (see scripts/ and docs/) -
+# Keep only small hand-curated reference tables and download manifests.
+data/*
+!data/reference/
+!data/manifests/
+
+# ---- Raw source dump + personal files (not part of the project) --------------
+datasets/*
+!datasets/DESIGN.md
+resume/
+practice*.py
+
+# ---- Models: keep the small trained boosters + metrics, ignore heavy weights --
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.h5
+*.keras
+
+# ---- AquaCrop: keep source, patch and databases; skip Windows binaries -------
+simulator/aquacrop/gui_ac73/**/*.exe
+simulator/aquacrop/gui_ac73/**/*.dll
+
+# ---- Logs & generated reports --------------------------------------------------
+*.log
+reports/download_logs/
+reports/monitor_logs/
+
+# ---- Rasters / archives that may land outside data/ ---------------------------
+*.tif
+*.tiff
+*.nc
+*.hdf
+*.h5
+*.zip
+
+# ---- OS / editors -------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

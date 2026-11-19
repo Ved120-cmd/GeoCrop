@@ -1,0 +1,13 @@
+crop,kc_ini,kc_ini_source,kc_mid,kc_end,l_ini,l_dev,l_mid,l_late,l_total,stage_row_region,stage_row_plant_month,zr_max_min_m,zr_max_max_m,p,max_height_m,season_hint,suitability_note
+cotton,0.35,FAO-56 T12 group g (Fibre crops),1.175,0.60,30,50,60,55,195,"Egypt; Pakistan; Calif.",Mar-May,1.0,1.7,0.65,1.5,kharif,Kc mid/end are midpoints of FAO ranges 1.15-1.20 / 0.70-0.50; stage lengths not Maharashtra-specific - calibrate with SAU data
+soybean,0.40,FAO-56 T12 group e (Legumes),1.15,0.50,15,15,40,15,85,Tropics,Dec,0.6,1.3,0.50,1.0,kharif,Tropics row (85 d) shorter than typical Maharashtra varieties (~95-110 d) - calibrate
+maize_kharif,0.30,FAO-56 T12 group i (Cereals),1.20,0.475,20,35,40,30,125,Nigeria (humid),June,1.0,1.7,0.55,2.0,kharif,Kc end midpoint of 0.60-0.35
+maize_rabi,0.30,FAO-56 T12 group i (Cereals),1.20,0.475,20,35,40,30,125,"India (dry, cool)",October,1.0,1.7,0.55,2.0,rabi,Kc end midpoint of 0.60-0.35
+sorghum,0.30,FAO-56 T12 group i (Cereals),1.05,0.55,20,35,40,30,125,"USA, Pakis., Med.",May/June,1.0,2.0,0.55,1.5,kharif,FAO prints total 130 but stages sum to 125; stage sum used; Kc mid midpoint of 1.00-1.10
+wheat,0.30,FAO-56 T12 group i (Cereals),1.15,0.325,15,25,50,30,120,Central India,November,1.0,1.5,0.55,1.0,rabi,Spring wheat Kc; Kc end midpoint of 0.25-0.4
+groundnut,0.40,FAO-56 T12 group e (Legumes),1.15,0.60,25,35,45,25,130,West Africa,Dry season,0.5,1.0,0.50,0.4,kharif,
+millet,0.30,FAO-56 T12 group i (Cereals),1.00,0.30,15,25,40,25,105,Pakistan,June,1.0,2.0,0.55,1.5,kharif,
+onion,0.70,FAO-56 T12 group a (Small vegetables),1.05,0.75,20,35,110,45,210,"Arid Region; Calif.",Oct; Jan,0.3,0.6,0.30,0.4,rabi,
+tomato,0.60,FAO-56 T12 group b (Solanum family),1.15,0.80,35,45,70,30,180,Arid Region,Oct/Nov,0.7,1.5,0.40,0.6,rabi,Kc end midpoint of 0.70-0.90
+sugarcane,0.40,FAO-56 T12 (Sugar cane row),1.25,0.75,35,60,190,120,405,Low Latitudes,,1.2,2.0,0.65,3.0,annual,Virgin cane; ratoon rows also in FAO-56 Table 11
+chickpea,0.40,FAO-56 T12 group e (Legumes),1.00,0.35,,,,,,not listed in Table 11,,0.6,1.0,0.50,0.4,rabi,NO stage lengths in FAO-56 Table 11 - nowcast disabled until SAU stage data is sourced

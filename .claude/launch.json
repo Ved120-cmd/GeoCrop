@@ -1,0 +1,20 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "geocrop-api",
+      "runtimeExecutable": "E:\\projects\\soil\\.venv\\Scripts\\uvicorn.exe",
+      "runtimeArgs": ["geocrop.api.main:app", "--host", "127.0.0.1", "--port", "8000"],
+      "cwd": "E:\\projects\\soil",
+      "port": 8000,
+      "env": { "TEMP": "D:\\geocrop_work\\tmp", "TMP": "D:\\geocrop_work\\tmp", "PYTHONIOENCODING": "utf-8" }
+    },
+    {
+      "name": "geocrop-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "E:\\projects\\soil\\frontend",
+      "port": 5173
+    }
+  ]
+}

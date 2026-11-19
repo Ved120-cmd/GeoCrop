@@ -1,0 +1,218 @@
+{
+ "generated": "2026-11-12T12:57:44+00:00",
+ "libraries": {
+  "xgboost": "NOT AVAILABLE (ModuleNotFoundError)",
+  "lightgbm": "NOT AVAILABLE (ModuleNotFoundError)",
+  "shap": "NOT AVAILABLE (ModuleNotFoundError)",
+  "scikit-learn": "NOT AVAILABLE (ModuleNotFoundError)",
+  "torch": "NOT AVAILABLE (ModuleNotFoundError)",
+  "torchvision": "NOT AVAILABLE (ModuleNotFoundError)",
+  "timm": "NOT AVAILABLE (ModuleNotFoundError)",
+  "tensorflow": "NOT AVAILABLE (ModuleNotFoundError)",
+  "earthengine-api": "NOT AVAILABLE (ModuleNotFoundError)"
+ },
+ "unassigned_checkpoints": [],
+ "models": [
+  {
+   "model": "Water stress 16-day (XGBoost/LightGBM)",
+   "module": "Predict",
+   "architecture": "XGBoost + LightGBM baselines; LSTM/TCN later",
+   "training_data": "A1; A2; B5; B6; C10; D14; G24",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "training dataset/labels",
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "trained checkpoint",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  },
+  {
+   "model": "Water stress 32-day (XGBoost/LightGBM)",
+   "module": "Predict",
+   "architecture": "XGBoost + LightGBM baselines; LSTM/TCN later",
+   "training_data": "A1; A2; B5; B6; C10; D14; G24",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "training dataset/labels",
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "trained checkpoint",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  },
+  {
+   "model": "Crop suitability (rule-based baseline)",
+   "module": "Crop Advisor",
+   "architecture": "Agronomic rules + scoring",
+   "training_data": "D14; D14b; F22; F23; B5",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  },
+  {
+   "model": "Plant disease classifier (EfficientNet/MobileNet/ResNet)",
+   "module": "Plant Doctor",
+   "architecture": "EfficientNet-B0 / MobileNetV3 transfer learning",
+   "training_data": "P29; P30",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "training dataset/labels",
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "trained checkpoint",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  },
+  {
+   "model": "Pest detection (IP102)",
+   "module": "Plant Doctor",
+   "architecture": "ResNet/EfficientNet classifier (IP102)",
+   "training_data": "P31",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "training dataset/labels",
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "trained checkpoint",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  },
+  {
+   "model": "Crop classification (S1/S2)",
+   "module": "Monitor",
+   "architecture": "LightGBM / temporal CNN on S1+S2 time series",
+   "training_data": "H26; H27",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "training dataset/labels",
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "trained checkpoint",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  },
+  {
+   "model": "Explainability (SHAP, metadata, versioning)",
+   "module": "Predict",
+   "architecture": "SHAP TreeExplainer + model registry",
+   "training_data": "",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "training dataset/labels",
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "trained checkpoint",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  }
+ ]
+}

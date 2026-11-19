@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   GeoCrop design tokens, from datasets/DESIGN.md ("Arva" pastoral editorial style).
+   Reckless (commercial) -> Source Serif 4; Inter for UI. Devanagari fonts for Marathi.
+   --------------------------------------------------------------------------- */
+@theme {
+  --color-forest: #07503f;
+  --color-forest-700: #063f32;
+  --color-lime: #e8fe85;
+  --color-bone: #f1efdf;
+  --color-ash: #efefef;
+  --color-ink: #212529;
+  --color-graphite: #353535;
+  --color-pewter: #6d6d6d;
+  --color-sky: #b2cee7;
+  --color-peach: #fceace;
+  --color-sage: #e6ecd5;
+  --color-moss: #c3cda7;
+
+  /* data-viz encodings (validated with the dataviz palette checks; see src/lib/scales.ts) */
+  --color-dry-1: #eda07a;
+  --color-dry-2: #d0683d;
+  --color-dry-3: #9e3f1e;
+  --color-wet-1: #86b6ef;
+  --color-wet-2: #3987e5;
+  --color-wet-3: #1c5cab;
+  --color-neutral: #e9e7dd;
+
+  --font-sans: "Inter", "Noto Sans Devanagari", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Source Serif 4", "Noto Serif Devanagari", Georgia, serif;
+
+  --radius-card: 20px;
+  --radius-hero: 30px;
+  --radius-input: 33px;
+  --radius-pill: 100px;
+}
+
+@layer base {
+  html { background: var(--color-bone); color: var(--color-ink); }
+  body { font-family: var(--font-sans); font-size: 16px; line-height: 1.52; letter-spacing: -0.011em; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: var(--font-serif); font-weight: 300; letter-spacing: -0.012em; line-height: 1.08; }
+  :focus-visible { outline: 2px solid var(--color-forest); outline-offset: 2px; }
+  ::selection { background: var(--color-lime); }
+}
+
+@utility btn { @apply inline-flex items-center justify-center gap-2 rounded-[100px] px-6 py-2.5 text-[14px] font-semibold tracking-[0.025em] transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+@utility btn-primary { @apply btn bg-forest text-white hover:bg-forest-700; }
+@utility btn-ghost { @apply btn border border-graphite text-ink hover:bg-white; }
+@utility btn-ghost-light { @apply btn border border-white/70 text-white hover:bg-white/10; }
+@utility btn-white { @apply btn bg-white text-ink hover:bg-bone; }
+@utility chip { @apply inline-flex items-center gap-1.5 rounded-[100px] border px-4 py-1.5 text-[14px] transition-colors; }
+@utility chip-off { @apply chip border-moss bg-white text-ink hover:border-forest; }
+@utility chip-on { @apply chip border-forest bg-forest text-white; }
+@utility card { @apply rounded-[20px] bg-white p-6 md:p-[30px]; }
+@utility field { @apply w-full rounded-[33px] border border-moss bg-white px-5 py-3 text-[16px] text-ink placeholder:text-pewter focus:border-forest focus:outline-none; }
+@utility label { @apply mb-1.5 block text-[14px] font-medium text-graphite; }
+@utility eyebrow { @apply text-[12px] font-medium uppercase tracking-[0.08em] text-pewter; }
+@utility badge { @apply inline-flex items-center gap-1 rounded-[100px] px-2.5 py-0.5 text-[12px] font-medium tracking-[0.025em]; }
+
+/* Leaflet: match the cream canvas, no default blue focus box */
+.leaflet-container { background: #ffffff; font-family: var(--font-sans); border-radius: 20px; }
+.leaflet-interactive:focus { outline: none; }
+.leaflet-tooltip { border-radius: 12px; border: 0; box-shadow: none; background: var(--color-ink); color: #fff; padding: 6px 10px; font-size: 13px; }
+.leaflet-tooltip-top:before { border-top-color: var(--color-ink); }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 60s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }

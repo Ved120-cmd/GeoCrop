@@ -1,0 +1,2283 @@
+{
+ "meta": {
+  "generated": "2026-11-13T09:41:00+00:00",
+  "tag": "final",
+  "mh_bbox": [
+   72.5,
+   15.5,
+   81.0,
+   22.2
+  ]
+ },
+ "datasets": [
+  {
+   "dataset_id": "A1",
+   "name": "MODIS MOD13Q1.061 (NDVI/EVI 250m 16-day)",
+   "source": "https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13Q1 | https://lpdaac.usgs.gov/products/mod13q1v061/",
+   "file_count": 253,
+   "total_size_mb": 4633.47,
+   "format": ".tif",
+   "status": "PRESENT BUT NEEDS PREPROCESSING",
+   "issues": [
+    "Stored as published: MODIS raw integers need scale factors (GeoTIFF tags); QA bands kept unapplied; SMAP/IMERG are daily aggregates of sub-daily data"
+   ],
+   "spatial_resolution": "[231.65635826, 231.65635826]",
+   "crs": "PROJCS[\"MODIS Sinusoidal\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Sinusoidal\"],PARAMETER[\"longitude_of_center\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+   "start": "2015-01-01",
+   "end": "2025-12-19",
+   "years": "",
+   "coverage_mh": 0.97,
+   "variables": [
+    "NDVI",
+    "EVI",
+    "SummaryQA",
+    "DayOfYear"
+   ],
+   "access": "gee_auth",
+   "weight": 5,
+   "modules": [
+    "Monitor",
+    "Predict"
+   ],
+   "licence": "NASA EOSDIS open data, no restrictions",
+   "size_hint": "~1-3 GB (MH, 2015-2025, NDVI+EVI+QA)",
+   "notes": "Scale factor 0.0001; keep SummaryQA/DetailedQA. Existing datasets/MOD13Q1061.py is a GEE snippet only.",
+   "recommended_action": "Authenticate Earth Engine (earthengine authenticate; set GEE project) then run scripts/gee/export_<dataset>.py",
+   "details": {
+    "n_inspected": 0,
+    "n_dates": 253,
+    "expected_n": 253,
+    "start": "2015-01-01",
+    "end": "2025-12-19",
+    "dup_dates": 0,
+    "sample_checked": 40,
+    "sample_bad": [],
+    "example": {
+     "type": "raster",
+     "crs": "PROJCS[\"MODIS Sinusoidal\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Sinusoidal\"],PARAMETER[\"longitude_of_center\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+     "width": 5100,
+     "height": 3105,
+     "bands": 4,
+     "dtype": "int16",
+     "res": [
+      231.65635826,
+      231.65635826
+     ],
+     "nodata": -32768.0,
+     "band_names": [
+      "NDVI",
+      "EVI",
+      "SummaryQA",
+      "DayOfYear"
+     ],
+     "bounds_4326": [
+      69.8218,
+      15.669,
+      84.0305,
+      22.1672
+     ],
+     "mh_overlap": 0.97,
+     "sample_valid": 59912,
+     "sample_total": 195270,
+     "sample_min": -2000.0,
+     "sample_max": 8932.0,
+     "tags": {
+      "image_id": "2015_01_01",
+      "nodata_meaning": "outside Maharashtra or masked in source (never zero-filled)",
+      "note": "DetailedQA omitted (uint16 bitfield; available on request); SummaryQA kept: 0 good,1 marginal,2 snow,3 cloudy",
+      "retrieved": "2026-11-13T05:19:30.182678+00:00",
+      "scale_factors": "{\"NDVI\": 0.0001, \"EVI\": 0.0001}",
+      "source": "Google Earth Engine MODIS/061/MOD13Q1",
+      "value_type": "satellite-derived estimate (raw integers, unscaled)",
+      "AREA_OR_POINT": "Area"
+     },
+     "all_constant": false
+    }
+   }
+  },
+  {
+   "dataset_id": "A2",
+   "name": "MODIS MOD11A2.061 (LST day/night 1km 8-day)",
+   "source": "https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD11A2",
+   "file_count": 506,
+   "total_size_mb": 414.77,
+   "format": ".tif",
+   "status": "PRESENT BUT NEEDS PREPROCESSING",
+   "issues": [
+    "Stored as published: MODIS raw integers need scale factors (GeoTIFF tags); QA bands kept unapplied; SMAP/IMERG are daily aggregates of sub-daily data"
+   ],
+   "spatial_resolution": "[926.62543314, 926.62543314]",
+   "crs": "PROJCS[\"MODIS Sinusoidal\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Sinusoidal\"],PARAMETER[\"longitude_of_center\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+   "start": "2015-01-01",
+   "end": "2025-12-27",
+   "years": "",
+   "coverage_mh": 0.971,
+   "variables": [
+    "LST_Day_1km",
+    "LST_Night_1km",
+    "QC_Day",
+    "QC_Night"
+   ],
+   "access": "gee_auth",
+   "weight": 4,
+   "modules": [
+    "Monitor",
+    "Predict"
+   ],
+   "licence": "NASA EOSDIS open data",
+   "size_hint": "~300-600 MB",
+   "notes": "Scale 0.02 -> Kelvin; minus 273.15 -> Celsius. Keep QC_Day/QC_Night.",
+   "recommended_action": "Authenticate Earth Engine (earthengine authenticate; set GEE project) then run scripts/gee/export_<dataset>.py",
+   "details": {
+    "n_inspected": 0,
+    "n_dates": 506,
+    "expected_n": 506,
+    "start": "2015-01-01",
+    "end": "2025-12-27",
+    "dup_dates": 0,
+    "sample_checked": 40,
+    "sample_bad": [],
+    "example": {
+     "type": "raster",
+     "crs": "PROJCS[\"MODIS Sinusoidal\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Sinusoidal\"],PARAMETER[\"longitude_of_center\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+     "width": 1276,
+     "height": 777,
+     "bands": 4,
+     "dtype": "uint16",
+     "res": [
+      926.62543314,
+      926.62543314
+     ],
+     "nodata": 65535.0,
+     "band_names": [
+      "LST_Day_1km",
+      "LST_Night_1km",
+      "QC_Day",
+      "QC_Night"
+     ],
+     "bounds_4326": [
+      69.8189,
+      15.667,
+      84.0397,
+      22.1714
+     ],
+     "mh_overlap": 0.971,
+     "sample_valid": 88967,
+     "sample_total": 247544,
+     "sample_min": 0.0,
+     "sample_max": 15566.0,
+     "tags": {
+      "image_id": "2015_01_01",
+      "nodata_meaning": "outside Maharashtra or masked in source (never zero-filled)",
+      "note": "LST in Kelvin after x0.02; subtract 273.15 for Celsius. 0 = no retrieval in source.",
+      "retrieved": "2026-11-13T05:20:16.877280+00:00",
+      "scale_factors": "{\"LST_Day_1km\": 0.02, \"LST_Night_1km\": 0.02}",
+      "source": "Google Earth Engine MODIS/061/MOD11A2",
+      "value_type": "satellite-derived estimate (raw integers, unscaled)",
+      "AREA_OR_POINT": "Area"
+     },
+     "all_constant": false
+    }
+   }
+  },
+  {
+   "dataset_id": "A3",
+   "name": "MODIS MOD16A2GF.061 (ET/PET 500m 8-day)",
+   "source": "https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD16A2GF",
+   "file_count": 506,
+   "total_size_mb": 1443.01,
+   "format": ".tif",
+   "status": "PRESENT BUT NEEDS PREPROCESSING",
+   "issues": [
+    "Stored as published: MODIS raw integers need scale factors (GeoTIFF tags); QA bands kept unapplied; SMAP/IMERG are daily aggregates of sub-daily data"
+   ],
+   "spatial_resolution": "[463.31271653, 463.31271653]",
+   "crs": "PROJCS[\"MODIS Sinusoidal\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Sinusoidal\"],PARAMETER[\"longitude_of_center\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+   "start": "2015-01-01",
+   "end": "2025-12-27",
+   "years": "",
+   "coverage_mh": 0.97,
+   "variables": [
+    "ET",
+    "PET",
+    "ET_QC"
+   ],
+   "access": "gee_auth",
+   "weight": 3,
+   "modules": [
+    "Monitor",
+    "Predict"
+   ],
+   "licence": "NASA EOSDIS open data",
+   "size_hint": "~500 MB-1 GB",
+   "notes": "",
+   "recommended_action": "Authenticate Earth Engine (earthengine authenticate; set GEE project) then run scripts/gee/export_<dataset>.py",
+   "details": {
+    "n_inspected": 0,
+    "n_dates": 506,
+    "expected_n": 506,
+    "start": "2015-01-01",
+    "end": "2025-12-27",
+    "dup_dates": 0,
+    "sample_checked": 40,
+    "sample_bad": [],
+    "example": {
+     "type": "raster",
+     "crs": "PROJCS[\"MODIS Sinusoidal\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Sinusoidal\"],PARAMETER[\"longitude_of_center\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+     "width": 2551,
+     "height": 1553,
+     "bands": 3,
+     "dtype": "int16",
+     "res": [
+      463.31271653,
+      463.31271653
+     ],
+     "nodata": -32768.0,
+     "band_names": [
+      "ET",
+      "PET",
+      "ET_QC"
+     ],
+     "bounds_4326": [
+      69.8189,
+      15.667,
+      84.0327,
+      22.1672
+     ],
+     "mh_overlap": 0.97,
+     "sample_valid": 77076,
+     "sample_total": 247156,
+     "sample_min": 16.0,
+     "sample_max": 413.0,
+     "tags": {
+      "image_id": "2015_01_01",
+      "nodata_meaning": "outside Maharashtra or masked in source (never zero-filled)",
+      "note": "kg/m2/8day after x0.1; source fill values 32761-32767 preserved as-is",
+      "retrieved": "2026-11-13T05:21:37.501994+00:00",
+      "scale_factors": "{\"ET\": 0.1, \"PET\": 0.1}",
+      "source": "Google Earth Engine MODIS/061/MOD16A2GF",
+      "value_type": "satellite-derived estimate (raw integers, unscaled)",
+      "AREA_OR_POINT": "Area"
+     },
+     "all_constant": false
+    }
+   }
+  },
+  {
+   "dataset_id": "A4",
+   "name": "MODIS MCD12Q1.061 (annual land cover 500m)",
+   "source": "https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MCD12Q1",
+   "file_count": 11,
+   "total_size_mb": 2.99,
+   "format": ".tif",
+   "status": "PRESENT AND VALID",
+   "issues": [
+    "Stored as published: MODIS raw integers need scale factors (GeoTIFF tags); QA bands kept unapplied; SMAP/IMERG are daily aggregates of sub-daily data"
+   ],
+   "spatial_resolution": "[463.31271653, 463.31271653]",
+   "crs": "PROJCS[\"MODIS Sinusoidal\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Sinusoidal\"],PARAMETER[\"longitude_of_center\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+   "start": "2015-01-01",
+   "end": "2025-01-01",
+   "years": "",
+   "coverage_mh": 0.97,
+   "variables": [
+    "LC_Type1",
+    "LC_Type2",
+    "QC",
+    "LW"
+   ],
+   "access": "gee_auth",
+   "weight": 2,
+   "modules": [
+    "Monitor",
+    "Crop Advisor"
+   ],
+   "licence": "NASA EOSDIS open data",
+   "size_hint": "~50 MB",
+   "notes": "Broad IGBP land cover only, not crop type.",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 0,
+    "n_dates": 11,
+    "expected_n": 11,
+    "start": "2015-01-01",
+    "end": "2025-01-01",
+    "dup_dates": 0,
+    "sample_checked": 11,
+    "sample_bad": [],
+    "example": {
+     "type": "raster",
+     "crs": "PROJCS[\"MODIS Sinusoidal\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Sinusoidal\"],PARAMETER[\"longitude_of_center\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+     "width": 2551,
+     "height": 1553,
+     "bands": 4,
+     "dtype": "uint8",
+     "res": [
+      463.31271653,
+      463.31271653
+     ],
+     "nodata": 255.0,
+     "band_names": [
+      "LC_Type1",
+      "LC_Type2",
+      "QC",
+      "LW"
+     ],
+     "bounds_4326": [
+      69.8189,
+      15.667,
+      84.0327,
+      22.1672
+     ],
+     "mh_overlap": 0.97,
+     "sample_valid": 88676,
+     "sample_total": 247156,
+     "sample_min": 0.0,
+     "sample_max": 17.0,
+     "tags": {
+      "image_id": "2015_01_01",
+      "nodata_meaning": "outside Maharashtra or masked in source (never zero-filled)",
+      "note": "IGBP (Type1) and UMD (Type2) classes - broad land cover, NOT crop type",
+      "retrieved": "2026-11-13T05:22:20.382235+00:00",
+      "scale_factors": "{}",
+      "source": "Google Earth Engine MODIS/061/MCD12Q1",
+      "value_type": "satellite-derived estimate (raw integers, unscaled)",
+      "AREA_OR_POINT": "Area"
+     },
+     "all_constant": false
+    }
+   }
+  },
+  {
+   "dataset_id": "B5",
+   "name": "NASA POWER daily (0.5 x 0.625 deg MERRA-2 grid)",
+   "source": "https://power.larc.nasa.gov/docs/services/api/temporal/daily/",
+   "file_count": 1,
+   "total_size_mb": 35.16,
+   "format": ".csv",
+   "status": "PRESENT AND VALID",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "2015-01-01",
+   "end": "2025-12-31",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 5,
+   "modules": [
+    "Monitor",
+    "Predict",
+    "Farm Simulator"
+   ],
+   "licence": "NASA open data; cite POWER Project",
+   "size_hint": "~60 MB CSV",
+   "notes": "",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 1,
+    "n_cells": 127,
+    "start": "2015-01-01",
+    "end": "2025-12-31",
+    "dup_rows": 0,
+    "fill_frac": {
+     "T2M": 0.0,
+     "T2M_MAX": 0.0,
+     "T2M_MIN": 0.0,
+     "RH2M": 0.0,
+     "PRECTOTCORR": 0.0,
+     "WS2M": 0.0,
+     "ALLSKY_SFC_SW_DWN": 0.0
+    },
+    "cells_complete": 127
+   }
+  },
+  {
+   "dataset_id": "B6",
+   "name": "IMD gridded daily rainfall 0.25 deg",
+   "source": "https://imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html",
+   "file_count": 12,
+   "total_size_mb": 279.96,
+   "format": ".nc",
+   "status": "PRESENT AND VALID",
+   "issues": [
+    "RF25_indselect_rfp25.nc: empty file (0 bytes)"
+   ],
+   "spatial_resolution": "0.25",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "coverage_mh": 1.0,
+   "variables": {
+    "RAINFALL": [
+     "TIME",
+     "LATITUDE",
+     "LONGITUDE"
+    ]
+   },
+   "access": "public_auto",
+   "weight": 5,
+   "modules": [
+    "Monitor",
+    "Predict",
+    "Farm Simulator"
+   ],
+   "licence": "IMD, free download for research; cite Pai et al. 2014",
+   "size_hint": "~25 MB/year, ~280 MB",
+   "notes": "2025 file availability depends on IMD release.",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 12,
+    "years": [
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025
+    ],
+    "example": {
+     "type": "netcdf",
+     "vars": {
+      "RAINFALL": [
+       "TIME",
+       "LATITUDE",
+       "LONGITUDE"
+      ]
+     },
+     "dims": {
+      "TIME": 365,
+      "LATITUDE": 129,
+      "LONGITUDE": 135
+     },
+     "attrs": {
+      "history": "FERRET V6.82   20-Feb-26",
+      "Conventions": "CF-1.0"
+     },
+     "start": "2015-01-01",
+     "end": "2015-12-31",
+     "n_time": 365,
+     "dup_times": 0,
+     "bounds_4326": [
+      66.5,
+      6.5,
+      100.0,
+      38.5
+     ],
+     "mh_overlap": 1.0,
+     "res": 0.25,
+     "mh_sample_nan_frac": 0.0529,
+     "mh_sample_min": 0.0,
+     "mh_sample_max": 123.41357421875
+    }
+   }
+  },
+  {
+   "dataset_id": "B7",
+   "name": "IMD gridded daily Tmax/Tmin 1 deg",
+   "source": "https://imdpune.gov.in/cmpg/Griddata/Max_1_Bin.html | Min_1_Bin.html",
+   "file_count": 22,
+   "total_size_mb": 30.89,
+   "format": ".grd",
+   "status": "PRESENT BUT NEEDS PREPROCESSING",
+   "issues": [
+    "Raw IMD binary (.GRD) - convert to NetCDF with lat/lon/time before use"
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 3,
+   "modules": [
+    "Predict",
+    "Farm Simulator"
+   ],
+   "licence": "IMD, free download for research",
+   "size_hint": "~1.4 MB/year/var",
+   "notes": "",
+   "recommended_action": "Run scripts/download/download_missing.py",
+   "details": {
+    "n_inspected": 22,
+    "years": [
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025
+    ],
+    "by_var": {
+     "maxtemp": {
+      "2015": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2016": {
+       "days": 366.0,
+       "plausible": true
+      },
+      "2017": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2018": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2019": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2020": {
+       "days": 366.0,
+       "plausible": true
+      },
+      "2021": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2022": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2023": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2024": {
+       "days": 366.0,
+       "plausible": true
+      },
+      "2025": {
+       "days": 365.0,
+       "plausible": true
+      }
+     },
+     "mintemp": {
+      "2015": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2016": {
+       "days": 366.0,
+       "plausible": true
+      },
+      "2017": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2018": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2019": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2020": {
+       "days": 366.0,
+       "plausible": true
+      },
+      "2021": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2022": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2023": {
+       "days": 365.0,
+       "plausible": true
+      },
+      "2024": {
+       "days": 366.0,
+       "plausible": true
+      },
+      "2025": {
+       "days": 365.0,
+       "plausible": true
+      }
+     }
+    }
+   }
+  },
+  {
+   "dataset_id": "B8",
+   "name": "CHIRPS v2.0 daily rainfall",
+   "source": "https://www.chc.ucsb.edu/data/chirps | https://data.chc.ucsb.edu/products/CHIRPS-2.0/",
+   "file_count": 11,
+   "total_size_mb": 852.62,
+   "format": ".nc",
+   "status": "PRESENT AND VALID",
+   "issues": [],
+   "spatial_resolution": "0.25",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "coverage_mh": 1.0,
+   "variables": {
+    "precip": [
+     "time",
+     "latitude",
+     "longitude"
+    ]
+   },
+   "access": "public_auto",
+   "weight": 2,
+   "modules": [
+    "Monitor",
+    "Predict"
+   ],
+   "licence": "CC BY 4.0 (CHC)",
+   "size_hint": "p25 global ~70-90 MB/year (cropped to MH after download)",
+   "notes": "Server rate-limits (HTTP 429); also available in GEE as UCSB-CHG/CHIRPS/DAILY.",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 11,
+    "years": [
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025
+    ],
+    "example": {
+     "type": "netcdf",
+     "vars": {
+      "precip": [
+       "time",
+       "latitude",
+       "longitude"
+      ]
+     },
+     "dims": {
+      "time": 365,
+      "latitude": 400,
+      "longitude": 1440
+     },
+     "attrs": {
+      "Conventions": "CF-1.6",
+      "title": "CHIRPS Version 2.0",
+      "history": "created by Climate Hazards Group",
+      "version": "Version 2.0",
+      "date_created": "2016-03-02",
+      "creator_name": "Pete Peterson",
+      "creator_email": "pete@geog.ucsb.edu",
+      "institution": "Climate Hazards Group.  University of California at Santa Barbara",
+      "documentation": "http://pubs.usgs.gov/ds/832/",
+      "reference": "Funk, C.C., Peterson, P.J., Landsfeld, M.F., Pedreros, D.H., Verdin, J.P., Rowland, J.D., Romero, B.E., Husak, G.J., Michaelsen, J.C., and Verdin, A.P., 2014, A quasi-global precipitation time series "
+     },
+     "start": "2015-01-01",
+     "end": "2015-12-31",
+     "n_time": 365,
+     "dup_times": 0,
+     "bounds_4326": [
+      -179.875,
+      -49.875,
+      179.875,
+      49.875
+     ],
+     "mh_overlap": 1.0,
+     "res": 0.25,
+     "mh_sample_nan_frac": 0.0479,
+     "mh_sample_min": 0.0,
+     "mh_sample_max": 54.03508758544922
+    }
+   }
+  },
+  {
+   "dataset_id": "B9",
+   "name": "GPM IMERG precipitation",
+   "source": "https://gpm.nasa.gov/data/imerg | GEE: NASA/GPM_L3/IMERG_V07",
+   "file_count": 4018,
+   "total_size_mb": 30.4,
+   "format": ".tif",
+   "status": "PRESENT BUT NEEDS PREPROCESSING",
+   "issues": [
+    "Stored as published: MODIS raw integers need scale factors (GeoTIFF tags); QA bands kept unapplied; SMAP/IMERG are daily aggregates of sub-daily data"
+   ],
+   "spatial_resolution": "[0.1, 0.1]",
+   "crs": "EPSG:4326",
+   "start": "2015-01-01",
+   "end": "2025-12-31",
+   "years": "",
+   "coverage_mh": 0.973,
+   "variables": [
+    "precipitation"
+   ],
+   "access": "gee_auth",
+   "weight": 2,
+   "modules": [
+    "Monitor",
+    "Predict"
+   ],
+   "licence": "NASA open data; Earthdata login required for direct download",
+   "size_hint": "daily MH subset ~1 GB",
+   "notes": "",
+   "recommended_action": "Authenticate Earth Engine (earthengine authenticate; set GEE project) then run scripts/gee/export_<dataset>.py",
+   "details": {
+    "n_inspected": 0,
+    "n_dates": 4018,
+    "expected_n": 4018,
+    "start": "2015-01-01",
+    "end": "2025-12-31",
+    "dup_dates": 0,
+    "sample_checked": 40,
+    "sample_bad": [],
+    "example": {
+     "type": "raster",
+     "crs": "EPSG:4326",
+     "width": 84,
+     "height": 66,
+     "bands": 1,
+     "dtype": "float32",
+     "res": [
+      0.1,
+      0.1
+     ],
+     "nodata": -9999.0,
+     "band_names": [
+      "precipitation"
+     ],
+     "bounds_4326": [
+      72.6,
+      15.5,
+      81.0,
+      22.1
+     ],
+     "mh_overlap": 0.973,
+     "sample_valid": 2940,
+     "sample_total": 5544,
+     "sample_min": 0.0,
+     "sample_max": 81.94999694824219,
+     "tags": {
+      "image_id": "2015_01_01",
+      "nodata_meaning": "outside Maharashtra or masked in source (never zero-filled)",
+      "note": "Daily total mm = mean of half-hourly mm/hr x 24 (UTC day). IMERG Final Run V07.",
+      "retrieved": "2026-11-13T05:23:08.406504+00:00",
+      "scale_factors": "{}",
+      "source": "Google Earth Engine NASA/GPM_L3/IMERG_V07",
+      "value_type": "model/estimate",
+      "AREA_OR_POINT": "Area"
+     },
+     "all_constant": false
+    }
+   }
+  },
+  {
+   "dataset_id": "C10",
+   "name": "SMAP L4 SPL4SMGP v008 (9 km, 3-hourly)",
+   "source": "https://nsidc.org/data/spl4smgp/versions/8 | GEE: NASA/SMAP/SPL4SMGP/008",
+   "file_count": 3929,
+   "total_size_mb": 97.13,
+   "format": ".tif",
+   "status": "PRESENT BUT NEEDS PREPROCESSING",
+   "issues": [
+    "Stored as published: MODIS raw integers need scale factors (GeoTIFF tags); QA bands kept unapplied; SMAP/IMERG are daily aggregates of sub-daily data"
+   ],
+   "spatial_resolution": "[0.09516257, 0.09516149]",
+   "crs": "EPSG:4326",
+   "start": "2015-03-31",
+   "end": "2025-12-31",
+   "years": "",
+   "coverage_mh": 0.966,
+   "variables": [
+    "sm_surface",
+    "sm_rootzone",
+    "sm_profile"
+   ],
+   "access": "gee_auth",
+   "weight": 5,
+   "modules": [
+    "Monitor",
+    "Predict"
+   ],
+   "licence": "NASA open data",
+   "size_hint": "daily-aggregated MH subset ~1-2 GB",
+   "notes": "Record starts 2015-03-31. Proxy for stress, not ground-truth crop stress. datasets/SMAP.js is a GEE snippet only.",
+   "recommended_action": "Authenticate Earth Engine (earthengine authenticate; set GEE project) then run scripts/gee/export_<dataset>.py",
+   "details": {
+    "n_inspected": 0,
+    "n_dates": 3929,
+    "expected_n": 3929,
+    "start": "2015-03-31",
+    "end": "2025-12-31",
+    "dup_dates": 0,
+    "sample_checked": 40,
+    "sample_bad": [],
+    "example": {
+     "type": "raster",
+     "crs": "EPSG:4326",
+     "width": 88,
+     "height": 69,
+     "bands": 3,
+     "dtype": "float32",
+     "res": [
+      0.09516257,
+      0.09516149
+     ],
+     "nodata": -9999.0,
+     "band_names": [
+      "sm_surface",
+      "sm_rootzone",
+      "sm_profile"
+     ],
+     "bounds_4326": [
+      72.5615,
+      15.5766,
+      80.9358,
+      22.1428
+     ],
+     "mh_overlap": 0.966,
+     "sample_valid": 3202,
+     "sample_total": 6072,
+     "sample_min": 0.033010125160217285,
+     "sample_max": 0.22538912296295166,
+     "tags": {
+      "image_id": "2015_03_31",
+      "nodata_meaning": "outside Maharashtra or masked in source (never zero-filled)",
+      "note": "Daily mean of 3-hourly SPL4SMGP v008 (m3/m3). Model-assimilated estimate; NOT ground-truth crop stress.",
+      "retrieved": "2026-11-13T05:22:43.956344+00:00",
+      "scale_factors": "{}",
+      "source": "Google Earth Engine NASA/SMAP/SPL4SMGP/008",
+      "value_type": "model/estimate",
+      "AREA_OR_POINT": "Area"
+     },
+     "all_constant": false
+    }
+   }
+  },
+  {
+   "dataset_id": "C11",
+   "name": "India-WRIS (reservoirs, rivers, irrigation)",
+   "source": "https://indiawris.gov.in/wris/",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 2,
+   "modules": [
+    "Monitor",
+    "Crop Advisor",
+    "Farm Simulator"
+   ],
+   "licence": "India-WRIS terms; interactive portal / data request",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "C12",
+   "name": "CGWB groundwater (levels, aquifer maps) - Maharashtra",
+   "source": "https://cgwb.gov.in/ | https://indiawris.gov.in/wris/#/groundWater",
+   "file_count": 1,
+   "total_size_mb": 1.67,
+   "format": ".zip",
+   "status": "PRESENT BUT INVALID",
+   "issues": [
+    "Files present but none refer to Maharashtra (wrong region)",
+    "datasets\\Madhya Pradesh - Depth of First Aquifer.zip"
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 2,
+   "modules": [
+    "Monitor",
+    "Crop Advisor"
+   ],
+   "licence": "GoI open data (NDSAP) where published",
+   "size_hint": "",
+   "notes": "Existing archive is for Madhya Pradesh, not Maharashtra.",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {
+    "n_inspected": 1
+   }
+  },
+  {
+   "dataset_id": "C13",
+   "name": "Maharashtra WRD irrigation/reservoir data",
+   "source": "https://wrd.maharashtra.gov.in/",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 1,
+   "modules": [
+    "Crop Advisor",
+    "Farm Simulator"
+   ],
+   "licence": "State government website terms",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "D14",
+   "name": "SoilGrids 2.0 (250m, 6 depths, mean + Q0.05/Q0.95/uncertainty)",
+   "source": "https://files.isric.org/soilgrids/latest/data/",
+   "file_count": 60,
+   "total_size_mb": 509.74,
+   "format": ".tif",
+   "status": "PRESENT BUT NEEDS PREPROCESSING",
+   "issues": [
+    "Integer-scaled values (see SoilGrids conversion factors); Homolosine projection; global model - not validated at farm level."
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 5,
+   "modules": [
+    "Soil Intelligence",
+    "Crop Advisor",
+    "Farm Simulator"
+   ],
+   "licence": "CC BY 4.0 (ISRIC)",
+   "size_hint": "~3-6 MB per layer for MH; 60 mean layers ~300 MB",
+   "notes": "",
+   "recommended_action": "Run scripts/download/download_missing.py",
+   "details": {
+    "n_inspected": 60,
+    "n_layers": 60,
+    "mean_layers": "60/60",
+    "quantile_layers": 0,
+    "bad": [],
+    "missing_mean": []
+   }
+  },
+  {
+   "dataset_id": "D14b",
+   "name": "SoilGrids250m 2017 water retention (AWCh1/2/3, WWP, AWCtS)",
+   "source": "https://files.isric.org/soilgrids/former/2017-03-10/data/",
+   "file_count": 35,
+   "total_size_mb": 96.1,
+   "format": ".tif",
+   "status": "PRESENT AND VALID",
+   "issues": [],
+   "spatial_resolution": "[0.00208333, 0.00208333]",
+   "crs": "EPSG:4326",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": 1.0,
+   "variables": [],
+   "access": "public_auto",
+   "weight": 4,
+   "modules": [
+    "Soil Intelligence",
+    "Farm Simulator"
+   ],
+   "licence": "ODbL / CC BY 4.0 (ISRIC 2017 release)",
+   "size_hint": "~35 layers x ~5 MB",
+   "notes": "Water content at -10/-20/-31.6 kPa (AWCh1-3) and -1500 kPa (WWP), 7 standard depths. SoilGrids 2.0 has no WRC layers.",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 35,
+    "n_rasters": 35,
+    "n_bad": 0,
+    "example": {
+     "type": "raster",
+     "crs": "EPSG:4326",
+     "width": 4080,
+     "height": 3216,
+     "bands": 1,
+     "dtype": "uint8",
+     "res": [
+      0.00208333,
+      0.00208333
+     ],
+     "nodata": 255.0,
+     "band_names": [],
+     "bounds_4326": [
+      72.5,
+      15.5013,
+      81.0,
+      22.2013
+     ],
+     "mh_overlap": 1.0,
+     "sample_valid": 247254,
+     "sample_total": 267138,
+     "sample_min": 2.0,
+     "sample_max": 21.0,
+     "tags": {
+      "note": "native projection/resolution preserved; values are integer-scaled as published",
+      "retrieved": "2026-11-12T13:37:56.822673+00:00",
+      "source_url": "https://files.isric.org/soilgrids/former/2017-03-10/data/AWCh1_M_sl1_250m_ll.tif",
+      "subset": "Maharashtra bbox (72.5, 15.5, 81.0, 22.2)",
+      "AREA_OR_POINT": "Area"
+     },
+     "all_constant": false
+    }
+   }
+  },
+  {
+   "dataset_id": "D15",
+   "name": "NBSS&LUP soil resource maps / Bhoomi Geoportal",
+   "source": "https://nbsslup.icar.gov.in/ | https://bhoomigeoportal-nbsslup.in/",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 4,
+   "modules": [
+    "Soil Intelligence",
+    "Crop Advisor"
+   ],
+   "licence": "ICAR-NBSS&LUP; digital data supplied on request / priced publications",
+   "size_hint": "",
+   "notes": "Viewer layers are not a sanctioned bulk download. Request via Director, NBSS&LUP, Amravati Road, Nagpur 440033.",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "D16",
+   "name": "Soil Health Card lab data (pH, EC, OC, NPK, S, micronutrients)",
+   "source": "https://soilhealth.dac.gov.in/",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 4,
+   "modules": [
+    "Soil Intelligence",
+    "Crop Advisor"
+   ],
+   "licence": "GoI portal; farmer-level records are personal data - use aggregated reports only",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "E17",
+   "name": "DEM (SRTM / Copernicus GLO-90)",
+   "source": "https://earthexplorer.usgs.gov/ (SRTM, login) | https://registry.opendata.aws/copernicus-dem/ (GLO-90, open)",
+   "file_count": 44,
+   "total_size_mb": 202.8,
+   "format": ".tif",
+   "status": "PRESENT AND VALID",
+   "issues": [],
+   "spatial_resolution": "[0.00083333, 0.00083333]",
+   "crs": "EPSG:4326",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": 0.009,
+   "variables": [],
+   "access": "public_auto",
+   "weight": 3,
+   "modules": [
+    "Monitor",
+    "Soil Intelligence"
+   ],
+   "licence": "Copernicus DEM GLO-90: free, licence by ESA/Airbus (attribution)",
+   "size_hint": "~70 tiles, ~300 MB",
+   "notes": "",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 44,
+    "n_rasters": 44,
+    "n_bad": 0,
+    "example": {
+     "type": "raster",
+     "crs": "EPSG:4326",
+     "width": 1200,
+     "height": 1200,
+     "bands": 1,
+     "dtype": "float32",
+     "res": [
+      0.00083333,
+      0.00083333
+     ],
+     "nodata": null,
+     "band_names": [],
+     "bounds_4326": [
+      72.9996,
+      15.0004,
+      73.9996,
+      16.0004
+     ],
+     "mh_overlap": 0.009,
+     "sample_valid": 360000,
+     "sample_total": 360000,
+     "sample_min": -7.5,
+     "sample_max": 879.662109375,
+     "tags": {
+      "AREA_OR_POINT": "Point"
+     },
+     "all_constant": false
+    },
+    "mh_cover_frac": 1.0
+   }
+  },
+  {
+   "dataset_id": "E18a",
+   "name": "Maharashtra state + district boundaries (current, 36 districts)",
+   "source": "https://www.geoboundaries.org/ (IND ADM1/ADM2, source lgdirectory.gov.in) | FAO GAUL 2015 | Survey of India",
+   "file_count": 2,
+   "total_size_mb": 5.45,
+   "format": ".geojson",
+   "status": "PRESENT AND VALID",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 5,
+   "modules": [
+    "Monitor",
+    "Predict",
+    "Soil Intelligence",
+    "Crop Advisor",
+    "Plant Doctor",
+    "Farm Simulator"
+   ],
+   "licence": "geoBoundaries: ODbL 1.0",
+   "size_hint": "",
+   "notes": "Indian official boundary depiction: Survey of India is authoritative for display.",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 2,
+    "layers": {
+     "data\\interim\\boundaries\\maharashtra_districts.geojson": {
+      "n": 36,
+      "crs": "EPSG:4326",
+      "invalid_geoms": 0
+     },
+     "data\\interim\\boundaries\\maharashtra_state.geojson": {
+      "n": 1,
+      "crs": "EPSG:4326",
+      "invalid_geoms": 0
+     }
+    },
+    "n_districts": 36
+   }
+  },
+  {
+   "dataset_id": "E18b",
+   "name": "Taluka / village boundaries",
+   "source": "https://onlinemaps.surveyofindia.gov.in/ | https://bhuvan.nrsc.gov.in/ | MRSAC https://mrsac.gov.in/",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 3,
+   "modules": [
+    "Monitor",
+    "Crop Advisor"
+   ],
+   "licence": "SoI / MRSAC terms; no verified open download found",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "F19",
+   "name": "DES district crop APY statistics (Maharashtra)",
+   "source": "https://data.desagri.gov.in/website/crops-report-district-level-web",
+   "file_count": 5,
+   "total_size_mb": 0.23,
+   "format": ".xls",
+   "status": "PRESENT BUT INCOMPLETE",
+   "issues": [
+    "Files are HTML tables with .xls extension (need HTML parser).",
+    "4 reports do not state which crop/crop-group they contain: ['apy_total_group_report (1).xls', 'apy_total_group_report (2).xls', 'apy_total_group_report (3).xls', 'apy_total_group_report.xls']",
+    "Years covered 2014 - 2015..2022 - 2023; 2023-24 onward missing; district names need harmonising (34-35 districts, new names)."
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": [
+    "2014 - 2015",
+    "2015 - 2016",
+    "2016 - 2017",
+    "2017 - 2018",
+    "2018 - 2019",
+    "2019 - 2020",
+    "2020 - 2021",
+    "2021 - 2022",
+    "2022 - 2023"
+   ],
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 4,
+   "modules": [
+    "Predict",
+    "Crop Advisor"
+   ],
+   "licence": "GoI open data (NDSAP)",
+   "size_hint": "",
+   "notes": "Exported reports do not embed the crop/crop-group name; re-export with crop name in filename.",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {
+    "n_inspected": 5,
+    "files": {
+     "datasets\\apy_total_group_report (1).xls": {
+      "type": "apy_html_table",
+      "real_format": "HTML table saved with .xls extension",
+      "rows": 34,
+      "n_districts": 34,
+      "years": [
+       "2014 - 2015",
+       "2015 - 2016",
+       "2016 - 2017",
+       "2017 - 2018",
+       "2018 - 2019",
+       "2019 - 2020",
+       "2020 - 2021",
+       "2021 - 2022",
+       "2022 - 2023"
+      ],
+      "crops_named": [],
+      "missing_cells_frac": 0.0
+     },
+     "datasets\\apy_total_group_report (2).xls": {
+      "type": "apy_html_table",
+      "real_format": "HTML table saved with .xls extension",
+      "rows": 35,
+      "n_districts": 35,
+      "years": [
+       "2014 - 2015",
+       "2015 - 2016",
+       "2016 - 2017",
+       "2017 - 2018",
+       "2018 - 2019",
+       "2019 - 2020",
+       "2020 - 2021",
+       "2021 - 2022",
+       "2022 - 2023"
+      ],
+      "crops_named": [],
+      "missing_cells_frac": 0.023
+     },
+     "datasets\\apy_total_group_report (3).xls": {
+      "type": "apy_html_table",
+      "real_format": "HTML table saved with .xls extension",
+      "rows": 35,
+      "n_districts": 35,
+      "years": [
+       "2014 - 2015",
+       "2015 - 2016",
+       "2016 - 2017",
+       "2017 - 2018",
+       "2018 - 2019",
+       "2019 - 2020",
+       "2020 - 2021",
+       "2021 - 2022",
+       "2022 - 2023"
+      ],
+      "crops_named": [],
+      "missing_cells_frac": 0.027
+     },
+     "datasets\\apy_total_group_report.xls": {
+      "type": "apy_html_table",
+      "real_format": "HTML table saved with .xls extension",
+      "rows": 35,
+      "n_districts": 35,
+      "years": [
+       "2014 - 2015",
+       "2015 - 2016",
+       "2016 - 2017",
+       "2017 - 2018",
+       "2018 - 2019",
+       "2019 - 2020",
+       "2020 - 2021",
+       "2021 - 2022",
+       "2022 - 2023"
+      ],
+      "crops_named": [],
+      "missing_cells_frac": 0.023
+     },
+     "datasets\\horizontal_crop_vertical_year_report.xls": {
+      "type": "apy_html_table",
+      "real_format": "HTML table saved with .xls extension",
+      "rows": 248,
+      "n_districts": 32,
+      "years": [
+       "2014 - 2015",
+       "2015 - 2016",
+       "2016 - 2017",
+       "2017 - 2018",
+       "2018 - 2019",
+       "2019 - 2020",
+       "2020 - 2021",
+       "2021 - 2022",
+       "2022 - 2023"
+      ],
+      "crops_named": [
+       "Sugarcane",
+       "Tobacco"
+      ],
+      "missing_cells_frac": 0.32
+     }
+    },
+    "other": [],
+    "years_covered": [
+     "2014 - 2015",
+     "2015 - 2016",
+     "2016 - 2017",
+     "2017 - 2018",
+     "2018 - 2019",
+     "2019 - 2020",
+     "2020 - 2021",
+     "2021 - 2022",
+     "2022 - 2023"
+    ]
+   }
+  },
+  {
+   "dataset_id": "F20",
+   "name": "FAO GIEWS India country brief",
+   "source": "https://www.fao.org/giews/countrybrief/country.jsp?code=IND",
+   "file_count": 1,
+   "total_size_mb": 0.67,
+   "format": ".pdf",
+   "status": "PRESENT BUT NEEDS PREPROCESSING",
+   "issues": [
+    "Reference documents - require manual curation into structured knowledge base"
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 1,
+   "modules": [
+    "Crop Advisor"
+   ],
+   "licence": "FAO copyright; non-commercial reuse permitted with attribution",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Run scripts/download/download_missing.py",
+   "details": {
+    "n_inspected": 1,
+    "pdfs": {
+     "datasets\\IND.pdf": {
+      "type": "pdf",
+      "pages": 3,
+      "title": "Microsoft Word - India",
+      "text_layer": true,
+      "first_text": " GIEWS global information and early warning system on food and agriculture GIEWS Country Brief The Republic of India Reference Date: 13-February-2026 FOOD SECURITY SNAPSHOT \uf0b7 Favourable production pro"
+     }
+    }
+   }
+  },
+  {
+   "dataset_id": "F21",
+   "name": "ICAR / SAU (MPKV, PDKV, VNMKV, DBSKKV) package of practices",
+   "source": "https://mpkv.ac.in/ | https://www.pdkv.ac.in/ | https://www.vnmkv.ac.in/ | https://dbskkv.org/",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 4,
+   "modules": [
+    "Crop Advisor",
+    "Plant Doctor"
+   ],
+   "licence": "University publications; copyright retained - use as reference, cite",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "F22",
+   "name": "FAO crop water information (Kc, stages, root depth, Ky)",
+   "source": "https://www.fao.org/land-water/databases-and-software/crop-information/en/ | FAO-56 https://www.fao.org/4/x0490e/x0490e00.htm",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "reference_only",
+   "weight": 3,
+   "modules": [
+    "Crop Advisor",
+    "Farm Simulator"
+   ],
+   "licence": "FAO copyright; free to read; non-commercial reuse",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Manual curation from public reference documents",
+   "details": {}
+  },
+  {
+   "dataset_id": "F23",
+   "name": "Maharashtra crop calendar (structured)",
+   "source": "SAU package of practices; FAO GIEWS crop calendar; IMD/ICAR agro-advisories",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 5,
+   "modules": [
+    "Predict",
+    "Crop Advisor",
+    "Farm Simulator"
+   ],
+   "licence": "Derived from cited sources",
+   "size_hint": "",
+   "notes": "Must be curated from authoritative documents; never invented.",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "G24",
+   "name": "ECMWF sub-seasonal forecasts + reforecasts",
+   "source": "https://www.ecmwf.int/en/forecasts/datasets/set-vi | https://apps.ecmwf.int/datasets/data/s2s/ | https://cds.climate.copernicus.eu/",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING (ACCESS RESTRICTED)",
+   "issues": [
+    "Requires authenticated access (account); not obtainable without user credentials."
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "account",
+   "weight": 4,
+   "modules": [
+    "Predict"
+   ],
+   "licence": "S2S archive: free for research (ECMWF account, non-commercial); CDS: account + licence acceptance",
+   "size_hint": "",
+   "notes": "Reforecasts are required to train 16/32-day models without future-weather leakage.",
+   "recommended_action": "Register for account / accept licence, then rerun scripts/download/download_missing.py",
+   "details": {}
+  },
+  {
+   "dataset_id": "G25",
+   "name": "IMD extended-range forecasts (archive)",
+   "source": "https://mausam.imd.gov.in/ | https://imdpune.gov.in/ (ERF)",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 2,
+   "modules": [
+    "Predict"
+   ],
+   "licence": "IMD; archive by request",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "H26",
+   "name": "Sentinel-2 SR harmonized",
+   "source": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING (ACCESS RESTRICTED)",
+   "issues": [
+    "Requires authenticated access (gee_auth); not obtainable without user credentials."
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "gee_auth",
+   "weight": 3,
+   "modules": [
+    "Monitor",
+    "Crop Advisor"
+   ],
+   "licence": "Copernicus free & open",
+   "size_hint": "",
+   "notes": "Process per farm/AOI in GEE; statewide 10 m archive is multi-TB.",
+   "recommended_action": "Authenticate Earth Engine (earthengine authenticate; set GEE project) then run scripts/gee/export_<dataset>.py",
+   "details": {}
+  },
+  {
+   "dataset_id": "H27",
+   "name": "Sentinel-1 GRD",
+   "source": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S1_GRD",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING (ACCESS RESTRICTED)",
+   "issues": [
+    "Requires authenticated access (gee_auth); not obtainable without user credentials."
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "gee_auth",
+   "weight": 2,
+   "modules": [
+    "Monitor",
+    "Crop Advisor"
+   ],
+   "licence": "Copernicus free & open",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Authenticate Earth Engine (earthengine authenticate; set GEE project) then run scripts/gee/export_<dataset>.py",
+   "details": {}
+  },
+  {
+   "dataset_id": "H28",
+   "name": "Landsat 8/9 C2 L2",
+   "source": "https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC08_C02_T1_L2",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING (ACCESS RESTRICTED)",
+   "issues": [
+    "Requires authenticated access (gee_auth); not obtainable without user credentials."
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "gee_auth",
+   "weight": 1,
+   "modules": [
+    "Monitor"
+   ],
+   "licence": "USGS public domain",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Authenticate Earth Engine (earthengine authenticate; set GEE project) then run scripts/gee/export_<dataset>.py",
+   "details": {}
+  },
+  {
+   "dataset_id": "P29",
+   "name": "PlantVillage",
+   "source": "https://github.com/spMohanty/PlantVillage-Dataset",
+   "file_count": 54396,
+   "total_size_mb": 868.07,
+   "format": ".cff;.csv;.jpeg;.jpg;.json;.md;.png;.py;.sh;.txt;.xlsx;.zip",
+   "status": "PRESENT AND VALID",
+   "issues": [
+    "Severe class imbalance (>10x)"
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 4,
+   "modules": [
+    "Plant Doctor"
+   ],
+   "licence": "CC BY-SA 3.0 (images)",
+   "size_hint": "raw/color ~0.9 GB",
+   "notes": "Lab images on plain backgrounds - poor field generalisation alone.",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 400,
+    "n_classes": 38,
+    "n_images": 54305,
+    "min_per_class": 152,
+    "max_per_class": 5507
+   }
+  },
+  {
+   "dataset_id": "P30",
+   "name": "PlantDoc",
+   "source": "https://github.com/pratikkayal/PlantDoc-Dataset",
+   "file_count": 2577,
+   "total_size_mb": 1980.59,
+   "format": ".csv;.jpeg;.jpg;.md;.png;.txt;.zip",
+   "status": "PRESENT AND VALID",
+   "issues": [
+    "Severe class imbalance (>10x)"
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 4,
+   "modules": [
+    "Plant Doctor"
+   ],
+   "licence": "CC BY 4.0",
+   "size_hint": "~1 GB",
+   "notes": "",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 400,
+    "n_classes": 29,
+    "n_images": 2573,
+    "min_per_class": 1,
+    "max_per_class": 191
+   }
+  },
+  {
+   "dataset_id": "P31",
+   "name": "IP102 insect pest dataset",
+   "source": "https://github.com/xpwu95/IP102",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 3,
+   "modules": [
+    "Plant Doctor"
+   ],
+   "licence": "Research use; hosted on Google Drive / Baidu (links in README)",
+   "size_hint": "~4-8 GB",
+   "notes": "",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "P32",
+   "name": "ICAR-NCIPM IPM packages",
+   "source": "https://ncipm.icar.gov.in/ | https://ppqs.gov.in/ipm-packages",
+   "file_count": 38,
+   "total_size_mb": 195.97,
+   "format": ".pdf",
+   "status": "PRESENT BUT NEEDS PREPROCESSING",
+   "issues": [
+    "Reference documents - require manual curation into structured knowledge base"
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 3,
+   "modules": [
+    "Plant Doctor",
+    "Crop Advisor"
+   ],
+   "licence": "GoI publications; reference use with citation",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Run scripts/download/download_missing.py",
+   "details": {
+    "n_inspected": 38,
+    "pdfs": {
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Banana.pdf": {
+      "type": "pdf",
+      "pages": 56,
+      "title": "untitled",
+      "text_layer": true,
+      "first_text": "AESA BASED IPM Package AESA based IPM \u2013 Banana Trichogramma spp. Important Natural Enemies of Banana Insect Pests Parasitoids Predators Chelonus sp Bracon sp Carcelia spp. Campoletis chlorideae Tetras"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Ber.pdf": {
+      "type": "pdf",
+      "pages": 65,
+      "title": "",
+      "text_layer": true,
+      "first_text": " AESA BASED IPM PACKAGE Ber Department of Agriculture and Cooperation Ministry of Agriculture Government of India Directorate of Plant Protection Quarantine and Storage N. H. IV.- Faridabad, Haryana N"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_BlackgramandGreengram.pdf": {
+      "type": "pdf",
+      "pages": 66,
+      "title": "",
+      "text_layer": true,
+      "first_text": " 1 AESA BASED IPM PACKAGE AESA based IPM- Black Gram (Urd) and Green Gram (Moong) Directorate of Plant Protection Quarantine and Storage N. H. IV, Faridabad, Haryana National Institute of Plant Health"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Brinjal.pdf": {
+      "type": "pdf",
+      "pages": 88,
+      "title": "",
+      "text_layer": true,
+      "first_text": " 1 AESA based IPM \u2013 Brinjal Pests Defenders Department of Agriculture and Cooperation Ministry of Agriculture Government of India Directorate of Plant Protection Quarantine and Storage N. H. IV, Farid"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_CabbageandCauliflower.pdf": {
+      "type": "pdf",
+      "pages": 84,
+      "title": "",
+      "text_layer": true,
+      "first_text": " 1 AESA based IPM \u2013 Cruciferous Vegetables (Cabbage, Cauliflower, Knol-Khol, Radish, Broccoli) Pests Defenders Department of Agriculture and Cooperation Ministry of Agriculture Government of India Dir"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Chickpea.pdf": {
+      "type": "pdf",
+      "pages": 56,
+      "title": "Cover page Chickpea.eps",
+      "text_layer": true,
+      "first_text": "iv INTEGRATED PEST MANAGEMENT FOR CHICKPEA K Chandrashekar Mrs Om Gupta Suhas Yelshetty O P Sharma Someshwar Bhagat C Chattopadhyay Mukesh Sehgal Arpana Kumari N Amaresan S N Sushil A K Sinha Ram Asre"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Chilli.pdf": {
+      "type": "pdf",
+      "pages": 93,
+      "title": "",
+      "text_layer": true,
+      "first_text": " 1 AESA based IPM \u2013 Chillies/ Capsicum Pests Defenders Department of Agriculture and Cooperation Ministry of Agriculture Government of India Directorate of Plant Protection Quarantine and Storage N. H"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Citrus.pdf": {
+      "type": "pdf",
+      "pages": 63,
+      "title": "untitled",
+      "text_layer": true,
+      "first_text": "The AESA based IPM - Citrus, was compiled by the NIPHM working group under the Chairmanship of Dr. Satyagopal Korlapati, IAS, DG, NIPHM, and guidance of Shri. Utpal Kumar Singh, IAS, JS (PP). The pack"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Coconut.pdf": {
+      "type": "pdf",
+      "pages": 52,
+      "title": "",
+      "text_layer": true,
+      "first_text": "AESA BASED IPM PACKAGE AESA based IPM \u2013 Coconut Bethylid fl y Important Natural Enemies of Coconut Insect Pests Predators Bracon spp. Ichneumonid wasp Goniozus nephantidis Typhia spp. Eulophid wasp Re"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Cotton.pdf": {
+      "type": "pdf",
+      "pages": 94,
+      "title": "untitled",
+      "text_layer": true,
+      "first_text": "INTEGRATED PEST MANAGEMENT PACKAGE FOR COTTON S Mohan D Monga Rishi Kumar V Nagrare Nandini Gokte-Narkhedkar S Vennila R K Tanwar O P Sharma Someshwar Bhagat Meenu Agarwal C Chattopadhyay Rakesh Kumar"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_CucurbitaceousVegetable.pdf": {
+      "type": "pdf",
+      "pages": 68,
+      "title": "",
+      "text_layer": true,
+      "first_text": " AESA based IPM \u2013 Cucurbitaceous Vegetable Crops (Cucumber, Bottle Gourd, Bitter Gourd, Sponge Gourd, Snake Gourd, Ash Gourd, Pumpkin, Squash) Pests Defenders Department of Agriculture and Cooperation"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_CustardApple.pdf": {
+      "type": "pdf",
+      "pages": 52,
+      "title": "",
+      "text_layer": true,
+      "first_text": " Custard Apple Directorate of Plant Protection, Quarantine and Storage N. H. IV, Faridabad, Haryana National Institute of Plant Health Management Rajendranagar, Hyderabad, Telangana Department of Agri"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Drumstick.pdf": {
+      "type": "pdf",
+      "pages": 34,
+      "title": "",
+      "text_layer": true,
+      "first_text": " AESA based IPM \u2013 Drumstick Pests Defenders Department of Agriculture and Cooperation Ministry of Agriculture Government of India Directorate of Plant Protection Quarantine and Storage N. H. IV, Farid"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Garlic.pdf": {
+      "type": "pdf",
+      "pages": 56,
+      "title": "untitled",
+      "text_layer": true,
+      "first_text": "AESA BASED IPM Package AESA based IPM \u2013 Garlic Ceranisus menes Important Natural Enemies of Garlic Insect Pests Parasitoids Predators Trichogramma spp. Bracon spp. Carcelia spp. Tetrastichus spp. Chel"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Ginger.pdf": {
+      "type": "pdf",
+      "pages": 53,
+      "title": "untitled",
+      "text_layer": true,
+      "first_text": "AESA BASED IPM Package AESA based IPM \u2013 Ginger Xanthopimpla quadridens Important Natural Enemies of Ginger Insect Pests Parasitoids Predators Trichogramma spp. Bracon spp. Mysoma sp Ceranisus menes Ap"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Grapes.pdf": {
+      "type": "pdf",
+      "pages": 81,
+      "title": "",
+      "text_layer": true,
+      "first_text": "1 AESA BASED IPM PACKAGE AESA based IPM - Grapes Department of Agriculture and Cooperation Ministry of Agriculture Government of India Directorate of Plant Protection Quarantine and Storage N. H. IV, "
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Groundnut.pdf": {
+      "type": "pdf",
+      "pages": 64,
+      "title": "Cover page Groundnut.eps",
+      "text_layer": true,
+      "first_text": "iv i Saroj Singh P P Thirumalaisamy G Harish Datta Ram S N Sushil A K Sinha Ram Asre K S Kapoor K Satyagopal P Jeyakumar Ajanta Birah O P Sharma Someshwar Bhagat P V Verma Sunil Kumar C Chattopadhyay "
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Guava.pdf": {
+      "type": "pdf",
+      "pages": 60,
+      "title": "",
+      "text_layer": true,
+      "first_text": " Guava Directorate of Plant Protection, Quarantine and Storage N. H. IV, Faridabad, Haryana National Institute of Plant Health Management Rajendranagar, Hyderabad, Telangana state Department of Agricu"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Maize.pdf": {
+      "type": "pdf",
+      "pages": 56,
+      "title": "Cover page Maize.eps",
+      "text_layer": true,
+      "first_text": "iv INTEGRATED PEST MANAGEMENT PACKAGE FOR MAIZE Sangit Kumar Pradyumn Kumar Jugal Kishor Bana M Shekhar S N Sushil A K Sinha Ram Asre K S Kapoor O P Sharma S Bhagat M Sehgal T Boopathi N Amaresan C Ch"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Mango.pdf": {
+      "type": "pdf",
+      "pages": 84,
+      "title": "",
+      "text_layer": true,
+      "first_text": "1 AESA BASED PACKAGE AESA based IPM \u2013 Mango Department of Agriculture and Cooperation Ministry of Agriculture Government of India Directorate of Plant Protection Quarantine and Storage N. H. IV, Farid"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Okra.pdf": {
+      "type": "pdf",
+      "pages": 81,
+      "title": "",
+      "text_layer": true,
+      "first_text": " AESA based IPM \u2013 Okra Pests Defenders Department of Agriculture and Cooperation Ministry of Agriculture Government of India Directorate of Plant Protection Quarantine and Storage N. H. IV, Faridabad,"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Onion.pdf": {
+      "type": "pdf",
+      "pages": 60,
+      "title": "untitled",
+      "text_layer": true,
+      "first_text": "AESA BASED IPM Package AESA based IPM \u2013 Onion Ceranisus menes Important Natural Enemies of Onion Insect Pests Parasitoids Predators Trichogramma spp. Bracon spp. Carcelia spp. Tetrastichus spp. Chelon"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Papaya.pdf": {
+      "type": "pdf",
+      "pages": 57,
+      "title": "",
+      "text_layer": true,
+      "first_text": " AESA BASED IPM PACKAGE PAPAYA Directorate of Plant Protection Quarantine and Storage N. H. IV, Faridabad, Haryana National Institute of Plant Health Management Rajendranagar, Hyderabad, Telangana Dep"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Pearlmillet.pdf": {
+      "type": "pdf",
+      "pages": 51,
+      "title": "",
+      "text_layer": true,
+      "first_text": "1 AESA BASED IPM PACKAGE-Pearl Millet Government of India Department of Agriculture and Cooperation Ministry of Agriculture Directorate of Plant Protection Quarantine and Storage N. H. IV, Faridabad, "
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Pomegranate.pdf": {
+      "type": "pdf",
+      "pages": 56,
+      "title": "",
+      "text_layer": true,
+      "first_text": " 1 AESA BASED IPM PACKAGE AESA based IPM \u2013 Pomegranate Department of Agriculture and Cooperation Ministry of Agriculture Government of India Directorate of Plant Protection Quarantine and Storage N. H"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Potato.pdf": {
+      "type": "pdf",
+      "pages": 76,
+      "title": "",
+      "text_layer": true,
+      "first_text": "AESA BASED IPM PACKAGE AESA based IPM \u2013 Potato Trichogramma spp. Important Natural Enemies of Potato Insect Pests Parasitoids Predators Bracon spp. Chrysocharis pentheus Ichneumon spp. Apanteles sp En"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Redgram.pdf": {
+      "type": "pdf",
+      "pages": 52,
+      "title": "untitled",
+      "text_layer": true,
+      "first_text": "AESA BASED IPM PACKAGE AESA based IPM \u2013 Redgram Trichogramma spp. Important Natural Enemies of Redgram Insect Pests Parasitoids Predators Tetrastichus spp. Campoletis spp. Bracon spp. Diaeretiella spp"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Rice.pdf": {
+      "type": "pdf",
+      "pages": 53,
+      "title": "untitled",
+      "text_layer": true,
+      "first_text": "INTEGRATED PEST MANAGEMENT PACKAGE FOR RICE Anand Prakash J S Bentur M Srinivas Prasad R K Tanwar O P Sharma Someshwar Bhagat Mukesh Sehgal S P Singh Monika Singh C Chattopadhyay S N Sushil A K Sinha "
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Safflower.pdf": {
+      "type": "pdf",
+      "pages": 48,
+      "title": "",
+      "text_layer": true,
+      "first_text": "AESA BASED IPM PACKAGE AESA based IPM \u2013 Saffl ower Trichogramma spp. Important Natural Enemies of Saffl ower Insect Pests Parasitoids Predators Bracon spp. Aphidius sp Ichneumon spp. Campoletis spp. C"
+     },
+     "data\\raw\\plant_health\\ipm_references\\ipm\\NIPHM_IPM_Sapota.pdf": {
+      "type": "pdf",
+      "pages": 44,
+      "title": "",
+      "text_layer": true,
+      "first_text": "1 AESA BASED IPM PACKAGE SAPOTA Department of Agriculture and Cooperation Ministry of Agriculture Government of India Directorate of Plant Protection, Quarantine and Storage N. H.- IV, Faridabad, Hary"
+     }
+    }
+   }
+  },
+  {
+   "dataset_id": "P33",
+   "name": "CIB&RC registered pesticides / approved uses",
+   "source": "https://ppqs.gov.in/divisions/cib-rc",
+   "file_count": 6,
+   "total_size_mb": 5.62,
+   "format": ".pdf",
+   "status": "PRESENT BUT NEEDS PREPROCESSING",
+   "issues": [
+    "Reference documents - require manual curation into structured knowledge base"
+   ],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 3,
+   "modules": [
+    "Plant Doctor"
+   ],
+   "licence": "GoI publications",
+   "size_hint": "",
+   "notes": "Label dose / PHI must come from approved label claims; never invented.",
+   "recommended_action": "Run scripts/download/download_missing.py",
+   "details": {
+    "n_inspected": 6,
+    "pdfs": {
+     "data\\raw\\plant_health\\ipm_references\\cibrc\\3._bio_fungicides_MUP_as_on_30.09.2026.pdf": {
+      "type": "pdf",
+      "pages": 20,
+      "title": "",
+      "text_layer": true,
+      "first_text": " Government of India Ministry of Agriculture & Farmers Welfare Department of Agriculture& Farmers Welfare Directorate of Plant Protection, Quarantine & Storage Central Insecticide Board & Registration"
+     },
+     "data\\raw\\plant_health\\ipm_references\\cibrc\\4._Herbicides_MUP_as_on_30.09.2026.pdf": {
+      "type": "pdf",
+      "pages": 79,
+      "title": "",
+      "text_layer": true,
+      "first_text": "1 \u092d\u093e\u0930\u0924 \u0938\u0930\u0915\u093e\u0930 Government of India \u0915\u0943\u0937\u093f \u0914\u0930 \u0937\u0915\u0938\u093e\u0928 \u0915\u0932\u094d\u092f\u093e\u0923 \u092e\u0902\u0924\u094d\u0930\u093e\u0932\u092f Ministry of Agriculture & Farmers Welfare \u0915\u0943\u0937\u093f \u090f\u0935\u0902 \u0937\u0915\u0938\u093e\u0928 \u0915\u0932\u094d\u092f\u093e\u0923 \u0937\u0935\u092d\u093e\u0917 Department of Agriculture & Farmers Welfare \u0935\u0928\u0938\u094d\u092a\u0937\u0924 \u0938\u0902\u0930\u0915\u094d\u0937\u0923, \u0938\u0902\u0917\u0930\u094b\u0927"
+     },
+     "data\\raw\\plant_health\\ipm_references\\cibrc\\5._PGR_MUP_as_on_30.09.2026.pdf": {
+      "type": "pdf",
+      "pages": 14,
+      "title": "                                                                                 ",
+      "text_layer": true,
+      "first_text": "1 \u092d\u093e\u0930\u0924 \u0938\u0930\u0915\u093e\u0930 Government of India \u0915\u0943\u0937\u093f \u0914\u0930 \u0937\u0915\u0938\u093e\u0928 \u0915\u0932\u094d\u092f\u093e\u0923 \u092e\u0902\u0924\u094d\u0930\u093e\u0932\u092f Ministry of Agriculture & Farmers Welfare \u0915\u0943\u0937\u093f \u090f\u0935\u0902 \u0937\u0915\u0938\u093e\u0928 \u0915\u0932\u094d\u092f\u093e\u0923 \u0937\u0935\u092d\u093e\u0917 Department of Agriculture & Farmers Welfare \u0935\u0928\u0938\u094d\u092a\u0937\u0924 \u0938\u0902\u0930\u0915\u094d\u0937\u0923, \u0938\u0902\u0917\u0930\u094b\u0927"
+     },
+     "data\\raw\\plant_health\\ipm_references\\cibrc\\Fungicide_MUP__as_on_30.09.2026.pdf": {
+      "type": "pdf",
+      "pages": 91,
+      "title": "",
+      "text_layer": true,
+      "first_text": "1 Ametoctradine Government of India Ministry of Agriculture & Farmers Welfare Department of Agriculture& Farmers Welfare Directorate of Plant Protection, Quarantine &Storage Central Insecticide Board "
+     },
+     "data\\raw\\plant_health\\ipm_references\\cibrc\\MUP_bio_insecticide_30.09.2026.pdf": {
+      "type": "pdf",
+      "pages": 19,
+      "title": "",
+      "text_layer": true,
+      "first_text": "1 \u092d\u093e\u0930\u0924 \u0938\u0930\u0915\u093e\u0930 / Government of India \u0915\u0943\u0937\u093f \u090f\u0935\u0902 \u0915\u0915\u0938\u093e\u0928 \u0915\u0932\u094d\u092f\u093e\u0923 \u092e\u0902\u0924\u094d\u0930\u093e\u0932\u092f / Ministry of Agriculture & Farmers Welfare \u0915\u0943\u0937\u093f \u090f\u0935\u0902 \u0915\u0915\u0938\u093e\u0928 \u0915\u0932\u094d\u092f\u093e\u0923 \u0937\u0935\u092d\u093e\u0917 Department of Agriculture & Farmers Welfare \u0935\u0928\u0938\u094d\u092a\u0924\u093f \u0938\u0902\u0930\u0915\u094d\u0937\u0923, \u0938"
+     },
+     "data\\raw\\plant_health\\ipm_references\\cibrc\\MUP_insecticide__30.09.2026.pdf": {
+      "type": "pdf",
+      "pages": 108,
+      "title": "",
+      "text_layer": true,
+      "first_text": "1 \u092d\u093e\u0930\u0924 \u0938\u0930\u0915\u093e\u0930 / Government of India \u0915\u0943\u0937\u093f \u090f\u0935\u0902 \u0937\u0915\u0938\u093e\u0928 \u0915\u0932\u094d\u092f\u093e\u0923 \u092e\u0902\u0924\u094d\u0930\u093e\u0932\u092f / Ministry of Agriculture & Farmers Welfare \u0915\u0943\u0937\u093f \u090f\u0935\u0902 \u0937\u0915\u0938\u093e\u0928 \u0915\u0932\u094d\u092f\u093e\u0923 \u0937\u0935\u092d\u093e\u0917 Department of Agriculture & Farmers Welfare \u0935\u0928\u0938\u094d\u092a\u0937\u0924 \u0938\u0902\u0930\u0915\u094d\u0937\u0923, \u0938"
+     }
+    }
+   }
+  },
+  {
+   "dataset_id": "P34",
+   "name": "Organic / natural farming references (NCOF, NMNF)",
+   "source": "https://ncof.dacnet.nic.in/ | https://naturalfarming.dac.gov.in/",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 1,
+   "modules": [
+    "Crop Advisor"
+   ],
+   "licence": "GoI publications",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "S35",
+   "name": "FAO AquaCrop 7.3 Python source (official)",
+   "source": "https://github.com/un-fao/fao-AquaCrop/releases/tag/v7.3",
+   "file_count": 2,
+   "total_size_mb": 1.22,
+   "format": ".zip",
+   "status": "PRESENT AND VALID",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 5,
+   "modules": [
+    "Farm Simulator"
+   ],
+   "licence": "(c) FAO 2026, all rights reserved; non-commercial use authorised on request (copyright@fao.org)",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 2,
+    "sha256_match": [
+     "data\\raw\\simulation\\aquacrop\\python.source.code.zip",
+     "datasets\\python.source.code.zip"
+    ]
+   }
+  },
+  {
+   "dataset_id": "S35b",
+   "name": "AquaCrop 7.3 GUI databases (crop .CRO / soil .SOL / climate defaults)",
+   "source": "https://github.com/un-fao/fao-AquaCrop/releases/download/v7.3/GUI_AC7.3.zip",
+   "file_count": 1,
+   "total_size_mb": 6.43,
+   "format": ".zip",
+   "status": "PRESENT AND VALID",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "public_auto",
+   "weight": 4,
+   "modules": [
+    "Farm Simulator"
+   ],
+   "licence": "(c) FAO",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "none",
+   "details": {
+    "n_inspected": 1,
+    "sha256_match": [
+     "data\\raw\\simulation\\aquacrop\\GUI_AC7.3.zip"
+    ]
+   }
+  },
+  {
+   "dataset_id": "S35c",
+   "name": "AquaCrop calibration/validation data for Maharashtra crops",
+   "source": "Field trials from SAUs / ICAR-AICRP; published calibration studies",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "manual_portal",
+   "weight": 4,
+   "modules": [
+    "Farm Simulator"
+   ],
+   "licence": "Per source",
+   "size_hint": "",
+   "notes": "",
+   "recommended_action": "Manual acquisition from portal / data request (see missing_resources.csv)",
+   "details": {}
+  },
+  {
+   "dataset_id": "X1",
+   "name": "Unidentified GEE exports datasets/out*.tif",
+   "source": "Earth Engine export (no region set)",
+   "file_count": 0,
+   "total_size_mb": 0.0,
+   "format": "",
+   "status": "MISSING",
+   "issues": [],
+   "spatial_resolution": "",
+   "crs": "",
+   "start": "",
+   "end": "",
+   "years": "",
+   "coverage_mh": "",
+   "variables": "",
+   "access": "reference_only",
+   "weight": 0,
+   "modules": [],
+   "licence": "",
+   "size_hint": "",
+   "notes": "No band names/metadata; bounds 0-2 deg lon/lat (Gulf of Guinea), all-zero or nodata.",
+   "recommended_action": "Manual curation from public reference documents",
+   "details": {}
+  }
+ ]
+}

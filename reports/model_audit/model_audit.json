@@ -1,0 +1,270 @@
+{
+ "generated": "2026-11-19T11:32:37+00:00",
+ "libraries": {
+  "xgboost": "2.1.3",
+  "lightgbm": "4.5.0",
+  "shap": "NOT AVAILABLE (ModuleNotFoundError)",
+  "scikit-learn": "1.5.2",
+  "torch": "NOT AVAILABLE (ModuleNotFoundError)",
+  "torchvision": "NOT AVAILABLE (ModuleNotFoundError)",
+  "timm": "NOT AVAILABLE (ModuleNotFoundError)",
+  "tensorflow": "NOT AVAILABLE (ModuleNotFoundError)",
+  "earthengine-api": "1.7.52"
+ },
+ "unassigned_checkpoints": [],
+ "models": [
+  {
+   "model": "Water stress 16-day (XGBoost/LightGBM)",
+   "module": "Predict",
+   "architecture": "XGBoost + LightGBM baselines; LSTM/TCN later",
+   "training_data": "A1; A2; B5; B6; C10; D14; G24",
+   "checkpoints": [
+    "models\\water_stress\\lead16\\lgbm_dry.txt",
+    "models\\water_stress\\lead16\\lgbm_point.txt",
+    "models\\water_stress\\lead16\\lgbm_q10.txt",
+    "models\\water_stress\\lead16\\lgbm_q90.txt",
+    "models\\water_stress\\lead16\\xgb_point.json"
+   ],
+   "load_results": {
+    "models\\water_stress\\lead16\\lgbm_dry.txt": [
+     true,
+     "lightgbm booster, 24 features"
+    ],
+    "models\\water_stress\\lead16\\lgbm_point.txt": [
+     true,
+     "lightgbm booster, 24 features"
+    ],
+    "models\\water_stress\\lead16\\lgbm_q10.txt": [
+     true,
+     "lightgbm booster, 24 features"
+    ],
+    "models\\water_stress\\lead16\\lgbm_q90.txt": [
+     true,
+     "lightgbm booster, 24 features"
+    ],
+    "models\\water_stress\\lead16\\xgb_point.json": [
+     true,
+     "xgboost booster, 24 features"
+    ]
+   },
+   "metrics_files": [
+    "E:\\projects\\soil\\models\\water_stress\\metrics.json"
+   ],
+   "training_status": "TRAINED (verified)",
+   "inference_status": "POSSIBLE",
+   "code": {
+    "files": [
+     "geocrop\\predict\\features.py",
+     "geocrop\\predict\\infer.py",
+     "geocrop\\predict\\model_card.py",
+     "geocrop\\predict\\train.py",
+     "geocrop\\predict\\__init__.py"
+    ],
+    "preprocessing": true,
+    "training": true,
+    "evaluation": false,
+    "inference": true,
+    "config": false
+   },
+   "missing": []
+  },
+  {
+   "model": "Water stress 32-day (XGBoost/LightGBM)",
+   "module": "Predict",
+   "architecture": "XGBoost + LightGBM baselines; LSTM/TCN later",
+   "training_data": "A1; A2; B5; B6; C10; D14; G24",
+   "checkpoints": [
+    "models\\water_stress\\lead32\\lgbm_dry.txt",
+    "models\\water_stress\\lead32\\lgbm_point.txt",
+    "models\\water_stress\\lead32\\lgbm_q10.txt",
+    "models\\water_stress\\lead32\\lgbm_q90.txt",
+    "models\\water_stress\\lead32\\xgb_point.json"
+   ],
+   "load_results": {
+    "models\\water_stress\\lead32\\lgbm_dry.txt": [
+     true,
+     "lightgbm booster, 24 features"
+    ],
+    "models\\water_stress\\lead32\\lgbm_point.txt": [
+     true,
+     "lightgbm booster, 24 features"
+    ],
+    "models\\water_stress\\lead32\\lgbm_q10.txt": [
+     true,
+     "lightgbm booster, 24 features"
+    ],
+    "models\\water_stress\\lead32\\lgbm_q90.txt": [
+     true,
+     "lightgbm booster, 24 features"
+    ],
+    "models\\water_stress\\lead32\\xgb_point.json": [
+     true,
+     "xgboost booster, 24 features"
+    ]
+   },
+   "metrics_files": [
+    "E:\\projects\\soil\\models\\water_stress\\metrics.json"
+   ],
+   "training_status": "TRAINED (verified)",
+   "inference_status": "POSSIBLE",
+   "code": {
+    "files": [
+     "geocrop\\predict\\features.py",
+     "geocrop\\predict\\infer.py",
+     "geocrop\\predict\\model_card.py",
+     "geocrop\\predict\\train.py",
+     "geocrop\\predict\\__init__.py"
+    ],
+    "preprocessing": true,
+    "training": true,
+    "evaluation": false,
+    "inference": true,
+    "config": false
+   },
+   "missing": []
+  },
+  {
+   "model": "Crop suitability (rule-based baseline)",
+   "module": "Crop Advisor",
+   "architecture": "Agronomic rules + scoring",
+   "training_data": "D14; D14b; F22; F23; B5",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  },
+  {
+   "model": "Plant disease classifier (EfficientNet/MobileNet/ResNet)",
+   "module": "Plant Doctor",
+   "architecture": "EfficientNet-B0 / MobileNetV3 transfer learning",
+   "training_data": "P29; P30",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "training dataset/labels",
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "trained checkpoint",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  },
+  {
+   "model": "Pest detection (IP102)",
+   "module": "Plant Doctor",
+   "architecture": "ResNet/EfficientNet classifier (IP102)",
+   "training_data": "P31",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "training dataset/labels",
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "trained checkpoint",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  },
+  {
+   "model": "Crop classification (S1/S2)",
+   "module": "Monitor",
+   "architecture": "LightGBM / temporal CNN on S1+S2 time series",
+   "training_data": "H26; H27",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "training dataset/labels",
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "trained checkpoint",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  },
+  {
+   "model": "Explainability (SHAP, metadata, versioning)",
+   "module": "Predict",
+   "architecture": "SHAP TreeExplainer + model registry",
+   "training_data": "",
+   "checkpoints": [],
+   "load_results": {},
+   "metrics_files": [],
+   "training_status": "NOT TRAINED",
+   "inference_status": "NOT POSSIBLE",
+   "code": {
+    "files": [],
+    "preprocessing": false,
+    "training": false,
+    "evaluation": false,
+    "inference": false,
+    "config": false
+   },
+   "missing": [
+    "training dataset/labels",
+    "preprocessing pipeline",
+    "training code",
+    "model config",
+    "trained checkpoint",
+    "evaluation metrics",
+    "inference code",
+    "documentation/model card"
+   ]
+  }
+ ]
+}

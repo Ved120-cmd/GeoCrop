@@ -1,0 +1,4 @@
+kc_mode,lead_days,n,r_model,r_persistence,mae_model,mae_persistence,skill_vs_persistence,bias_model
+landscape,3,1440,0.978,0.986,0.034,0.031,-0.093,-0.027
+landscape,7,1440,0.957,0.955,0.055,0.062,0.102,-0.045
+landscape,14,1440,0.937,0.885,0.079,0.104,0.246,-0.065

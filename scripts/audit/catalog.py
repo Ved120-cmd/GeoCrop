@@ -257,7 +257,7 @@ MODELS = [
          needs_data=["A1", "A2", "B5", "B6", "C10", "D14", "G24"], weight=5),
     dict(id="M2", name="Crop suitability (rule-based baseline)", module="Crop Advisor", dir="models/crop_suitability", code="ml/crop_suitability",
          needs_data=["D14", "D14b", "F22", "F23", "B5"], weight=4),
-    dict(id="M3", name="Plant disease classifier (EfficientNet/MobileNet/ResNet)", module="Plant Doctor", dir="models/plant_disease", code="ml/plant_disease",
+    dict(id="M3", name="Plant disease classifier (EfficientNet/MobileNet/ResNet)", module="Plant Doctor", dir="models/plant_disease", code="geocrop/plantdoctor", labels="data/processed/plantdoctor/manifest.parquet",
          needs_data=["P29", "P30"], weight=4),
     dict(id="M4", name="Pest detection (IP102)", module="Plant Doctor", dir="models/pest_detection", code="ml/pest_detection",
          needs_data=["P31"], weight=3),

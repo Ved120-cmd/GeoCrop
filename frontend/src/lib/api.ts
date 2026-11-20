@@ -6,7 +6,9 @@ export class ApiError extends Error {
 }
 
 async function req<T>(path: string, init?: RequestInit): Promise<T> {
-  const r = await fetch(`/api${path}`, { headers: { 'Content-Type': 'application/json' }, ...init })
+  // FormData bodies must not get a JSON content type (the browser sets the multipart boundary)
+  const headers = init?.body instanceof FormData ? undefined : { 'Content-Type': 'application/json' }
+  const r = await fetch(`/api${path}`, { headers, ...init })
   if (!r.ok) {
     let msg = `${r.status} ${r.statusText}`
     try { const j = await r.json(); msg = typeof j.detail === 'string' ? j.detail : JSON.stringify(j.detail) } catch { /* not json */ }
@@ -20,6 +22,7 @@ export const api = {
   post: <T,>(p: string, body: unknown) => req<T>(p, { method: 'POST', body: JSON.stringify(body) }),
   put: <T,>(p: string, body: unknown) => req<T>(p, { method: 'PUT', body: JSON.stringify(body) }),
   del: (p: string) => req<void>(p, { method: 'DELETE' }),
+  postForm: <T,>(p: string, body: FormData) => req<T>(p, { method: 'POST', body }),
 }
 
 // ---------- types (mirror geocrop/api) ----------

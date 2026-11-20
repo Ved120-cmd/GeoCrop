@@ -17,7 +17,7 @@ GeoCrop is an AI-assisted agricultural intelligence platform for **Maharashtra, 
 | **Farm Simulator** | "What if" yield and water simulations with FAO AquaCrop 7.3 | **Built** (backend + UI) |
 | **Predict** | 16- and 32-day dry-soil early warning (LightGBM, SHAP) | Built 2026-11-19 (docs/PREDICT.md) |
 | **Crop Advisor** | Crop suitability, sowing windows, nutrients, IPM | Not built (status page only) |
-| **Plant Doctor** | Disease and pest detection from photos | Not built (status page only) |
+| **Plant Doctor** | Leaf-disease screening from a photo (EfficientNet-B0) | Built 2026-11-20 (docs/PLANT_DOCTOR.md) |
 
 **Guiding principles agreed with the user:**
 - Never invent agronomic values, labels, metrics or data.
@@ -181,6 +181,21 @@ reports/               readiness report, dataset/model audits, download logs, mo
   * `check_models.py` now verifies M1a and M1b as trained.
 * Tests: 34 passing (`tests/test_predict.py` added).
 
+### Phase 7: Plant Doctor (2026-11-20)
+* `geocrop/plantdoctor/`: EfficientNet-B0 transfer learning, covering 38 classes and 14 crops. Data: PlantVillage (lab) plus PlantDoc (field). Details: [docs/PLANT_DOCTOR.md](docs/PLANT_DOCTOR.md).
+* **Splits:** grouped by leaf (leaf map, photo sequence, near-exact hash); PlantDoc de-duplicated against training. A loose hash threshold chained groups and was rejected.
+* **Test results:**
+  * Lab 99.6%.
+  * **Field 70.1% top-1, 81.4% with the crop given,** 91.8% top-3, 96.5% healthy vs diseased.
+  * Temperature refit on field validation (disclosed): ECE went from 0.16 to 0.077.
+* **Machine fixes:**
+  * The page file was moved to D: by the user, because the commit limit was exhausted (GPU allocations count against it under WDDM). Commit limit is now 29 GB.
+  * `channels_last` is 9× slower with this cuDNN, so it isn't used.
+  * `python-multipart` and `huggingface_hub` installed. torch 2.5.1+cu124 and timm 1.0.12 added.
+* **Deployment:** API `/doctor/info` and `/doctor/diagnose`; page `/plant-doctor` with photo upload or camera, top-3 results, reliability card and next steps. Photos are not stored.
+* **Not covered:** cotton, soybean diseases, onion, sugarcane, pulses and pomegranate are the biggest gaps for Maharashtra.
+* Tests: 37 (`tests/test_doctor.py` added).
+
 ---
 
 ## 5. Key decisions and conventions
@@ -202,7 +217,7 @@ scripts\db\start_db.cmd                                   # PostgreSQL (after ev
 .venv/Scripts/uvicorn geocrop.api.main:app --port 8000    # API (docs: http://localhost:8000/docs)
 cd frontend && npm run dev                                # web app: http://localhost:5173
 .venv/Scripts/python -m geocrop.monitor.update            # daily data update (~10-15 min)
-.venv/Scripts/python -m pytest tests -p no:cacheprovider  # tests (34; DB tests skip if PostgreSQL is down)
+.venv/Scripts/python -m pytest tests -p no:cacheprovider  # tests (37; DB tests skip if PostgreSQL is down)
 ```
 
 ---
@@ -233,7 +248,7 @@ cd frontend && npm run dev                                # web app: http://loca
 
 1. Schedule the daily update (Windows Task Scheduler), with user approval.
 2. **Predict improvements:** add ECMWF reforecasts, the main missing source of skill; calibrate dry probabilities and improve recall; validate the proxy against ground data.
-3. **Plant Doctor:** a disease classifier on PlantVillage + PlantDoc (check the GPU first), reporting lab and field accuracy separately.
+3. **Plant Doctor improvements:** collect expert-labelled Maharashtra field photos; add cotton, soybean, onion, pomegranate and grape-downy-mildew classes; add an IP102 pest model and a "not a leaf" gate.
 4. **Crop Advisor:** curate the crop calendar and requirements from SAU documents, with citations.
 5. **Simulator:** a "this season outlook" (observed weather to date plus ECMWF plus past-year analogues), calibration with SAU trial data, and a runoff term in the nowcast.
 6. Report the AquaCrop bug to FAO, and get the Marathi text reviewed by a native speaker.

@@ -1,6 +1,6 @@
 # GeoCrop: data and ML foundation
 
-This repository holds the data foundation, the **Monitor** backend, the **Farm Simulator** (FAO AquaCrop 7.3; see [docs/SIMULATOR.md](docs/SIMULATOR.md)) and **Predict** (16/32-day dry-soil early warning; see [docs/PREDICT.md](docs/PREDICT.md)) for GeoCrop (Maharashtra). Monitor covers the data pipeline, indices, today's-stress nowcast, a daily update job and an API. See [docs/MONITOR.md](docs/MONITOR.md). The web app is in `frontend/`. Crop Advisor and Plant Doctor are not built yet. Project history and decisions: [context.md](context.md).
+This repository holds the data foundation, the **Monitor** backend, the **Farm Simulator** (FAO AquaCrop 7.3; see [docs/SIMULATOR.md](docs/SIMULATOR.md)), **Predict** (16/32-day dry-soil early warning; see [docs/PREDICT.md](docs/PREDICT.md)) and **Plant Doctor** (leaf-disease screening; see [docs/PLANT_DOCTOR.md](docs/PLANT_DOCTOR.md)) for GeoCrop (Maharashtra). Monitor covers the data pipeline, indices, today's-stress nowcast, a daily update job and an API. See [docs/MONITOR.md](docs/MONITOR.md). The web app is in `frontend/`. Crop Advisor is not built yet. Project history and decisions: [context.md](context.md).
 
 ## Layout
 

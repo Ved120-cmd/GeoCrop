@@ -44,6 +44,8 @@ practice*.py
 *.safetensors
 *.h5
 *.keras
+# small (~16 MB) GeoCrop disease checkpoint: keep
+!models/plant_disease/*.pt
 
 # ---- AquaCrop: keep source, patch and databases; skip Windows binaries -------
 simulator/aquacrop/gui_ac73/**/*.exe

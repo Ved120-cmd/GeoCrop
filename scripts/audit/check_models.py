@@ -83,7 +83,7 @@ def main():
         meta = meta or list(mdir.parent.glob("model_card*.md"))
         trained = any(v[0] for v in loads.values()) and bool(metrics)
         # hyper-parameters, features and iterations are recorded in metrics.json for the GeoCrop models
-        config_ok = code["config"] or any("best_iterations" in p.read_text(errors="ignore") for p in metrics)
+        config_ok = code["config"] or any(k in p.read_text(errors="ignore") for p in metrics for k in ("best_iterations", "\"epochs\""))
         missing = [k for k, ok in [("training dataset/labels", labels_ok), ("preprocessing pipeline", code["preprocessing"]),
                                    ("training code", code["training"]), ("model config", config_ok),
                                    ("trained checkpoint", bool(ck)), ("evaluation metrics", bool(metrics)),

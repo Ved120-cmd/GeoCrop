@@ -10,10 +10,10 @@ const MonitorOverview = lazy(() => import('./pages/MonitorOverview'))
 const DistrictPage = lazy(() => import('./pages/DistrictPage'))
 const MyFarm = lazy(() => import('./pages/MyFarm'))
 const SoilPage = lazy(() => import('./pages/SoilPage'))
-const ModulePage = lazy(() => import('./pages/ModulePage'))
 const SimulatorPage = lazy(() => import('./pages/SimulatorPage'))
 const PredictPage = lazy(() => import('./pages/PredictPage'))
 const DoctorPage = lazy(() => import('./pages/DoctorPage'))
+const AdvisorPage = lazy(() => import('./pages/AdvisorPage'))
 
 export default function App() {
   return (
@@ -30,7 +30,7 @@ export default function App() {
         <Route path="/soil" element={<SoilPage />} />
         <Route path="/predict" element={<PredictPage />} />
         <Route path="/predict/district/:id" element={<PredictPage />} />
-        <Route path="/crop-advisor" element={<ModulePage module="advisor" />} />
+        <Route path="/crop-advisor" element={<AdvisorPage />} />
         <Route path="/plant-doctor" element={<DoctorPage />} />
         <Route path="/simulator" element={<SimulatorPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

@@ -55,7 +55,7 @@ def from_day_nr(n: int) -> date:
 
 # ------------------------------------------------------------------ writers
 def _series_header(desc, start: date):
-    return [desc, "     1  : Daily records (1=daily, 2=10-daily and 3=monthly data)", "     1  : First day of record (1, 11 or 21 for 10-day or 1 for months)",
+    return [desc, "     1  : Daily records (1=daily, 2=10-daily and 3=monthly data)", f"     {start.day}  : First day of record (1, 11 or 21 for 10-day or 1 for months)",  # daily data: the REAL first day
             f"    {start.month}  : First month of record", f"  {start.year}  : First year of record (1901 if not linked to a specific year)", ""]
 
 

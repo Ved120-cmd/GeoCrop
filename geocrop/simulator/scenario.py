@@ -10,6 +10,7 @@ Honest framing (shown in the UI):
   well above farmers' actual yields (the yield gap).
 * Weather and soil are district averages (POWER ~50 km, IMD 0.25 deg, SoilGrids 250 m averaged).
 """
+import calendar
 import math
 import shutil
 from dataclasses import dataclass, field
@@ -24,6 +25,7 @@ from geocrop.monitor import soilwater
 from geocrop.simulator import aquacrop as ac
 
 WEATHER = PROCESSED / "monitor/weather"
+CLIM_MARGIN = 3
 
 # crop code -> (AquaCrop file, calibration origin, yield column, yield label, max season days)
 CROPS = {
@@ -122,6 +124,15 @@ def initial_water(district_id: int, sow: date, horizons):
 
 
 # ------------------------------------------------------------------ scenario run
+def label_year_shift(sow: date) -> int:
+    """1 when the season must be written with next year's date labels (leap year, sown after February)."""
+    return 1 if calendar.isleap(sow.year) and sow.month > 2 else 0
+
+
+def _relabel(d: date, shift: int) -> date:
+    return d.replace(year=d.year + shift) if shift else d
+
+
 @dataclass
 class Irrigation:
     mode: str = "rainfed"                 # rainfed | net | schedule
@@ -141,12 +152,20 @@ def _prepare(D, LIST, tag, district_id, crop, sow, irrigation):
     cro, origin, ycol, ylabel, maxdays = CROPS[crop]
     w = district_weather(district_id)
     end = sow + timedelta(days=maxdays)
-    seg = w[(w.date >= pd.Timestamp(sow)) & (w.date <= pd.Timestamp(end))]
-    if seg.empty or seg.date.min().date() != sow or seg.date.max().date() < end:
+    # climate runs CLIM_MARGIN days past the simulation end: the engine's 365.25-day calendar can place the
+    # last simulated day one day after the real calendar date in leap years
+    seg = w[(w.date >= pd.Timestamp(sow)) & (w.date <= pd.Timestamp(end + timedelta(days=CLIM_MARGIN)))]
+    if seg.empty or seg.date.min().date() != sow or seg.date.max().date() < end + timedelta(days=CLIM_MARGIN):
         raise ValueError(f"weather series does not cover {sow}..{end}")
     hz = district_horizons(district_id)
     depths, vols, init_src = initial_water(district_id, sow, hz)
-    ac.write_climate(D, f"{tag}W", seg[["date", "tmin", "tmax", "eto", "rain"]], f"GeoCrop district {district_id} {sow}..{end}")
+    # The engine's 365.25-day calendar mis-handles crop start dates after February in leap years (the crop never
+    # starts: Cycle = -9, or the engine crashes). Such seasons are written with the NEXT (non-leap) year as the date
+    # label. The weather is the same real daily sequence, so only the CO2 year label (~2 ppm) changes.
+    shift = label_year_shift(sow)
+    clim = seg[["date", "tmin", "tmax", "eto", "rain"]].copy()
+    clim["date"] = clim.date + pd.DateOffset(years=shift) if shift else clim.date
+    ac.write_climate(D, f"{tag}W", clim, f"GeoCrop district {district_id} {sow}..{end}")
     if not (D / cro).exists():
         shutil.copy(ac.GUI_DATA / cro, D / cro)
     if not (D / "Soil.SOL").exists():
@@ -157,7 +176,8 @@ def _prepare(D, LIST, tag, district_id, crop, sow, irrigation):
         ac.write_irrigation_net(D, f"{tag}R", irrigation.allowable_depletion_raw_pct, irrigation.method, irrigation.wetted_pct); files["irr"] = f"{tag}R.IRR"
     elif irrigation.mode == "schedule" and irrigation.schedule:
         ac.write_irrigation_schedule(D, f"{tag}R", irrigation.schedule, irrigation.method, irrigation.wetted_pct); files["irr"] = f"{tag}R.IRR"
-    ac.write_project(LIST / f"{tag}.PRO", f"GeoCrop {crop} d{district_id} sown {sow}", sow, end, sow, end, files)
+    lsow, lend = _relabel(sow, shift), _relabel(end, shift)
+    ac.write_project(LIST / f"{tag}.PRO", f"GeoCrop {crop} d{district_id} sown {sow}", lsow, lend, lsow, lend, files)
     return dict(sow=sow, init_src=init_src, filled=seg.set_index("date").filled, ycol=ycol, ylabel=ylabel)
 
 
@@ -174,17 +194,32 @@ def _summarise(res, meta, keep_daily):
                evaporation_mm=float(s["E"]), drainage_mm=float(s["Drain"]), runoff_mm=float(s["Runoff"]),
                water_stress_expansion_pct=int(s["ExpStr"]), water_stress_stomata_pct=int(s["StoStr"]), temperature_stress_pct=int(s["TempStr"]),
                water_productivity_kg_m3=float(s["WPet"]), weather_gap_filled_pct=round(100 * cyc_filled, 1), complete_observed_weather=cyc_filled == 0.0, initial_water=meta["init_src"],
-               harvest_date=str(sow + timedelta(days=int(s["Cycle"]))) if s["Cycle"] > 0 else None)
+               harvest_date=str(sow + timedelta(days=int(s["Cycle"]))) if s["Cycle"] > 0 else None,
+               # Cycle -9: the engine never completed a crop cycle (an engine anomaly, not a measured crop failure)
+               engine_failed=bool(s["Cycle"] <= 0))
     if keep_daily:
-        d = res.daily
+        d = res.daily.reset_index(drop=True)
+        d = d.assign(_date=[str(sow + timedelta(days=i)) for i in range(len(d))])  # row i = sowing day + i (real calendar)
         d = d[d["Stage"] > 0] if "Stage" in d else d
         cols = {"DAP": "dap", "CC": "canopy_pct", "Biomass": "biomass_t_ha", ycol: "yield_t_ha", "Tr/Trx": "transp_rel_pct",
                 "Rain": "rain_mm", "Irri": "irrigation_mm", "StSto": "stress_stomata_pct", "Wr": "root_zone_water_mm",
                 "Wr(FC)": "root_zone_fc_mm", "Wr(PWP)": "root_zone_pwp_mm"}
         dd = d[[c for c in cols if c in d.columns]].rename(columns=cols)
-        dd.insert(0, "date", [str(sow + timedelta(days=int(x) - 1)) for x in dd.dap])
+        dd.insert(0, "date", d["_date"].values)
         out["daily"] = dd.astype(object).where(dd != -9, None).to_dict(orient="records")
     return out
+
+
+def _run_alone(district_id, crop, sow, irrigation):
+    r = ac.new_run_dir()
+    try:
+        meta = _prepare(r / "testcase/DATA", r / "testcase/LIST", "S00", district_id, crop, sow, irrigation)
+        rr = ac.run_batch(r, ["S00"])["S00"]
+        return rr if isinstance(rr, Exception) else (rr, meta)
+    except Exception as e:
+        return e
+    finally:
+        shutil.rmtree(r, ignore_errors=True)
 
 
 def run_seasons(district_id: int, crop: str, sows: list[date], irrigation: Irrigation, keep_daily_for: set | None = None, parallel=2):
@@ -209,10 +244,14 @@ def run_seasons(district_id: int, crop: str, sows: list[date], irrigation: Irrig
         if metas:
             res = ac.run_batch(r, list(metas))
             for tag, rr in res.items():
+                if isinstance(rr, Exception) and len(metas) > 1:
+                    # an engine crash in one season ends the whole batch process: re-run lost seasons one by one
+                    rr = _run_alone(district_id, crop, metas[tag]["sow"], irrigation)
                 if isinstance(rr, Exception):
                     errs.append(dict(sow_date=str(metas[tag]["sow"]), error=str(rr)[:300]))
                 else:
-                    outs.append(_summarise(rr, metas[tag], metas[tag]["sow"] in keep_daily_for))
+                    rr, meta = rr if isinstance(rr, tuple) else (rr, metas[tag])
+                    outs.append(_summarise(rr, meta, meta["sow"] in keep_daily_for))
         shutil.rmtree(r, ignore_errors=True)
         return outs, errs
 
@@ -238,7 +277,7 @@ def simulate_years(district_id: int, crop: str, sow_month: int, sow_day: int, ir
     sows = [date(y, sow_month, sow_day) for y in years]
     keep = {date(keep_daily_for, sow_month, sow_day)} if keep_daily_for else set()
     runs, errors = run_seasons(district_id, crop, sows, irrigation, keep)
-    complete = [r for r in runs if r["complete_observed_weather"]]
+    complete = [r for r in runs if r["complete_observed_weather"] and not r["engine_failed"]]
     ys = np.array([r["yield_t_ha"] for r in complete])
     summary = None
     if len(ys):
@@ -248,7 +287,9 @@ def simulate_years(district_id: int, crop: str, sow_month: int, sow_day: int, ir
                        median_irrigation_mm=round(float(np.median([r["irrigation_mm"] for r in complete])), 0),
                        median_rain_mm=round(float(np.median([r["rain_mm"] for r in complete])), 0),
                        worst_year=int(complete[int(ys.argmin())]["year"]), best_year=int(complete[int(ys.argmax())]["year"]),
-                       note="Statistics use only seasons whose whole crop cycle had observed weather.")
+                       engine_failures=sum(r["engine_failed"] for r in runs),
+                       note="Statistics use only seasons whose whole crop cycle had observed weather; seasons where the AquaCrop "
+                            "engine did not complete a crop cycle are excluded and counted in engine_failures.")
     return dict(crop=crop, crop_file=cro, crop_calibration=origin, yield_type=ylabel, district_id=district_id, sow=f"{sow_day:02d}-{sow_month:02d}",
                 irrigation=irrigation.label(), runs=runs, errors=errors, summary=summary,
                 soil=[h.__dict__ for h in district_horizons(district_id)],

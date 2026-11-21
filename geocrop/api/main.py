@@ -185,3 +185,7 @@ app.include_router(_pred_router)
 from geocrop.api.doctor_routes import router as _doc_router  # noqa: E402
 
 app.include_router(_doc_router)
+
+from geocrop.api.advisor_routes import router as _adv_router  # noqa: E402
+
+app.include_router(_adv_router)

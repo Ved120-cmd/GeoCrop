@@ -30,6 +30,21 @@ Days without observed weather are filled from district climatology and flagged. 
 * **"Irrigate when needed":** yields stabilise at 4.9–5.7 t/ha. Irrigation demand runs about 450 mm in drought years and 60–110 mm in wet years.
 * **Tests** (`tests/test_simulator.py`): engine day numbering, Ksat ordering, the FAO example round-trip, irrigation never lowering yield, and drought years being worse than wet years.
 
+## Input fixes (2026-11-20): results before this date were affected
+
+These were found while building Crop Advisor. Re-run any saved scenario.
+
+1. **Weather was shifted by the sowing day-of-month.**
+   * **Problem:** every climate file declared that its record started on day 1 of the month, but the data started on the sowing day. The engine therefore grew a crop sown on the 15th on weather from 14 days later. The default 25 June sowing was off by 24 days.
+   * **Fix:** the header now carries the real first day.
+   * **Check:** a check against the engine's own daily output now matches our weather on every day.
+2. **Leap-year sowings after February never started the crop** (cycle −9, yield 0, or an engine crash). This comes from the engine's 365.25-day calendar.
+   * **Fix:** such seasons are written with the next (non-leap) year as the date label. The real weather sequence is unchanged; only the CO₂ year label moves (about 2 ppm).
+3. **One engine crash lost the remaining seasons of its batch.**
+   * **Fix:** lost seasons are now re-run one by one.
+4. **Engine anomalies are flagged.** A season with no completed crop cycle is flagged as `engine_failed` and excluded from the statistics, with a count reported.
+5. **Daily chart dates** are now counted from the simulation start (row i = sowing day + i). Previously they were derived from days-after-planting, which stays at 0 until emergence.
+
 ## Limitations (shown in the UI)
 
 1. **Water-limited attainable yield.** Soil fertility is non-limiting, with no pests or weeds. Real farm yields are usually much lower (Latur soybean is typically about 1 t/ha), so use the simulator to **compare choices**, not to predict a harvest. AquaCrop's fertility-stress setting has no effect with these crop files, because their fertility response is not calibrated, so we do not offer it.

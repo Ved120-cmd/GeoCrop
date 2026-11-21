@@ -16,7 +16,7 @@ GeoCrop is an AI-assisted agricultural intelligence platform for **Maharashtra, 
 | **Soil Intelligence** | District soil profile, water-holding capacity | **Basic version built** (SoilGrids estimates, UI page) |
 | **Farm Simulator** | "What if" yield and water simulations with FAO AquaCrop 7.3 | **Built** (backend + UI) |
 | **Predict** | 16- and 32-day dry-soil early warning (LightGBM, SHAP) | Built 2026-11-19 (docs/PREDICT.md) |
-| **Crop Advisor** | Crop suitability, sowing windows, nutrients, IPM | Not built (status page only) |
+| **Crop Advisor** | Crop ranking per district, season and water from simulated past seasons | Built 2026-11-21 (docs/CROP_ADVISOR.md) |
 | **Plant Doctor** | Leaf-disease screening from a photo (EfficientNet-B0) | Built 2026-11-20 (docs/PLANT_DOCTOR.md) |
 
 **Guiding principles agreed with the user:**
@@ -196,6 +196,24 @@ reports/               readiness report, dataset/model audits, download logs, mo
 * **Not covered:** cotton, soybean diseases, onion, sugarcane, pulses and pomegranate are the biggest gaps for Maharashtra.
 * Tests: 37 (`tests/test_doctor.py` added).
 
+### Phase 8: Crop Advisor + simulator fixes (2026-11-20 to 21)
+* **Approach:** `geocrop/advisor/` ranks crops by how they would have done in each district's real past seasons, simulated with AquaCrop. No invented agronomic rules. Details: [docs/CROP_ADVISOR.md](docs/CROP_ADVISOR.md).
+  * **Grid:** about 27k seasons. Kharif: 5 crops × 3 sowing dates. Rabi: 6 crops × 4 dates. Each rainfed and irrigated, 2015–2025, all 36 districts.
+  * **Ranking:** FAO (1976) suitability classes from relative yield against the best districts under the same water regime.
+  * **Card details:** bad-year risk, irrigation need, sowing-date sensitivity, official NIPHM IPM PDF, and this season's SMAP and Predict context.
+* **Honesty checks:**
+  * Rain-only rabi potato and tomato are not ranked (irrigated crops in practice).
+  * Crop-file notes: the potato file matures in about 60 days here; the sorghum (Texas) and maize (California) files give high attainable yields.
+  * FAO-56 season-length check; edge-of-window flags; a rainfed crop's share of its irrigated potential.
+  * Rainfed non-establishment counts as a failed season; irrigated non-completion is an engine anomaly and excluded.
+* **Farm Simulator input bugs fixed** (they affected all earlier simulator results; see docs/SIMULATOR.md):
+  1. The climate header said day 1 for every record, so weather was shifted by (sowing day − 1) days.
+  2. Leap-year sowings after February never started the crop; fixed by relabelling with the next year.
+  3. An engine crash lost the rest of its batch; lost seasons are now re-run one by one.
+  4. Daily chart dates were wrong.
+* **Performance:** 3 precompute processes thrashed memory (155 min per district). One process with 10 engine processes takes 3 min per district.
+* **Laptop:** the laptop sleeping overnight paused the run; keep it awake during long jobs.
+
 ---
 
 ## 5. Key decisions and conventions
@@ -217,7 +235,7 @@ scripts\db\start_db.cmd                                   # PostgreSQL (after ev
 .venv/Scripts/uvicorn geocrop.api.main:app --port 8000    # API (docs: http://localhost:8000/docs)
 cd frontend && npm run dev                                # web app: http://localhost:5173
 .venv/Scripts/python -m geocrop.monitor.update            # daily data update (~10-15 min)
-.venv/Scripts/python -m pytest tests -p no:cacheprovider  # tests (37; DB tests skip if PostgreSQL is down)
+.venv/Scripts/python -m pytest tests -p no:cacheprovider  # tests (43; DB tests skip if PostgreSQL is down)
 ```
 
 ---
@@ -249,6 +267,6 @@ cd frontend && npm run dev                                # web app: http://loca
 1. Schedule the daily update (Windows Task Scheduler), with user approval.
 2. **Predict improvements:** add ECMWF reforecasts, the main missing source of skill; calibrate dry probabilities and improve recall; validate the proxy against ground data.
 3. **Plant Doctor improvements:** collect expert-labelled Maharashtra field photos; add cotton, soybean, onion, pomegranate and grape-downy-mildew classes; add an IP102 pest model and a "not a leaf" gate.
-4. **Crop Advisor:** curate the crop calendar and requirements from SAU documents, with citations.
+4. **Crop Advisor improvements:** add pulses (tur, gram), onion, sugarcane, rice; SAU crop calendars and calibrated crop files; prices and costs (MSP/APMC) for an economic ranking.
 5. **Simulator:** a "this season outlook" (observed weather to date plus ECMWF plus past-year analogues), calibration with SAU trial data, and a runoff term in the nowcast.
 6. Report the AquaCrop bug to FAO, and get the Marathi text reviewed by a native speaker.

@@ -67,3 +67,38 @@
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .marquee-track { animation: marquee 60s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* ---------- Motion (quiet: short fades and lifts, no bounce, no shadows) ---------- */
+:root { --ease-out: cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+.reveal.reveal-in { opacity: 1; transform: none; }
+.grow-bar { transition: width 900ms var(--ease-out); }
+
+/* route change: the new page fades up */
+@keyframes page-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.page-enter { animation: page-enter 420ms var(--ease-out) both; }
+
+/* hero entrance: staggered words / blocks */
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise 900ms var(--ease-out) both; }
+
+/* slow drift for the background field quilt */
+@keyframes drift { from { transform: perspective(900px) rotateX(28deg) scale(1.35) translateY(0); } to { transform: perspective(900px) rotateX(28deg) scale(1.35) translateY(-6%); } }
+.quilt-drift { animation: drift 40s ease-in-out infinite alternate; }
+
+/* gentle hover for pastel cards and list rows: lift + 3D tilt toward the pointer (set by JS), no shadow */
+@utility lift { @apply transition-transform duration-300 will-change-transform; transition-timing-function: var(--ease-out); }
+.lift:hover { transform: translateY(-4px); }
+.tilt { transition: transform 300ms var(--ease-out); transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px)); will-change: transform; }
+
+/* pulsing "live" dot for data freshness */
+@keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.8); } }
+.live-dot { animation: pulse-dot 2.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.reveal-in { opacity: 1; transform: none; transition: none; }
+  .grow-bar, .tilt, .lift { transition: none; }
+  .lift:hover { transform: none; }
+  .tilt { transform: none; }
+  .page-enter, .rise, .quilt-drift, .live-dot { animation: none; }
+}

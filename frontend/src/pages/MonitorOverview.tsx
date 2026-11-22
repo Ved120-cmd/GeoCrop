@@ -8,6 +8,7 @@ import { INDICATORS, indicatorByKey } from '../lib/indicators'
 import { NO_DATA } from '../lib/scales'
 import { DistrictChoropleth, useDistrictGeo } from '../components/Maps'
 import { BinPill, Container, ErrorBox, Legend, Loading, MethodNote, NatureBadge, SectionHeader, Swatch } from '../components/ui'
+import { Reveal } from '../components/motion'
 
 const REGION_ORDER = ['Konkan', 'Western Maharashtra', 'North Maharashtra', 'Khandesh', 'Marathwada', 'Vidarbha']
 
@@ -100,11 +101,11 @@ export default function MonitorOverview() {
         <section className="mt-10">
           <h2 className="mb-4 text-[28px]">{t('districts_ranked')} <span className="font-sans text-[14px] text-pewter">· {t('sort_worst')}</span></h2>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {rows.map((d) => {
+            {rows.map((d, i) => {
               const r = ind.read(d)
               return (
-                <li key={d.district_id}>
-                  <Link to={`/monitor/district/${d.district_id}`} className="group flex items-center gap-4 rounded-[20px] bg-white p-5 transition-colors hover:bg-sage">
+                <Reveal as="li" key={d.district_id} delay={Math.min(i, 8) * 45}>
+                  <Link to={`/monitor/district/${d.district_id}`} className="lift group flex items-center gap-4 rounded-[20px] bg-white p-5 transition-colors hover:bg-sage">
                     <span className="h-10 w-1.5 shrink-0 rounded-full" style={{ background: r.bin?.color ?? '#efefef' }} aria-hidden />
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-[16px] font-semibold">{d.district}</p>
@@ -116,7 +117,7 @@ export default function MonitorOverview() {
                     </div>
                     <ArrowRight size={16} className="text-pewter transition-transform group-hover:translate-x-0.5" />
                   </Link>
-                </li>
+                </Reveal>
               )
             })}
           </ul>

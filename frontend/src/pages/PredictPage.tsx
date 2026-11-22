@@ -9,6 +9,7 @@ import { DRY, OK, WET, type Bin } from '../lib/scales'
 import { DistrictChoropleth, useDistrictGeo } from '../components/Maps'
 import { ChartCard, FOREST, NORMAL } from '../components/Charts'
 import { BinPill, Container, ErrorBox, Legend as MapLegend, Loading, MethodNote, SectionHeader } from '../components/ui'
+import { Reveal, Tilt } from '../components/motion'
 
 interface Fc { district_id: number; district?: string; lead_days: number; issue_date: string; valid_date: string; sm_pct_now: number | null
   sm_pct_median: number; sm_pct_p10: number; sm_pct_p90: number; prob_dry: number; dry_risk: 'low' | 'possible' | 'elevated' | 'high' }
@@ -107,9 +108,9 @@ function PredictOverview() {
             </aside>
           </div>
           <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {rows.map((d) => (
-              <li key={d.district_id}>
-                <Link to={`/predict/district/${d.district_id}?lead=${lead}`} className="group flex items-center gap-4 rounded-[20px] bg-white p-5 hover:bg-sage">
+            {rows.map((d, i) => (
+              <Reveal as="li" key={d.district_id} delay={Math.min(i, 8) * 45}>
+                <Link to={`/predict/district/${d.district_id}?lead=${lead}`} className="lift group flex items-center gap-4 rounded-[20px] bg-white p-5 transition-colors hover:bg-sage">
                   <span className="h-10 w-1.5 shrink-0 rounded-full" style={{ background: riskBin(d.dry_risk)?.color }} aria-hidden />
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-semibold">{d.district}</p>
@@ -119,9 +120,9 @@ function PredictOverview() {
                     <p className="text-[15px] font-medium tabular-nums">{Math.round(d.prob_dry * 100)}%</p>
                     <BinPill bin={riskBin(d.dry_risk)} />
                   </div>
-                  <ArrowRight size={16} className="text-pewter" />
+                  <ArrowRight size={16} className="text-pewter transition-transform group-hover:translate-x-0.5" />
                 </Link>
-              </li>
+              </Reveal>
             ))}
           </ul>
           <div className="mt-10"><MethodNote>
@@ -160,12 +161,12 @@ function PredictDistrict({ did }: { did: number }) {
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {[f16, f32].map((f, i) => (
-          <div key={f.lead_days} className={`rounded-[20px] ${i ? 'bg-peach' : 'bg-sky'} p-6`}>
+          <Tilt key={f.lead_days} className={`rounded-[20px] ${i ? 'bg-peach' : 'bg-sky'} p-6`}>
             <p className="text-[14px] font-semibold">{f.lead_days} {tt(lang, 'days')} · {fmtD(f.valid_date)}</p>
             <p className="mt-3 text-[13px] text-graphite">{tt(lang, 'dryChance')}</p>
             <div className="flex items-center gap-3"><span className="font-serif text-[45px] font-light leading-none">{Math.round(f.prob_dry * 100)}%</span><BinPill bin={riskBin(f.dry_risk)} /></div>
             <p className="mt-3 text-[13px] text-graphite">{tt(lang, 'likely')}: <strong>{f.sm_pct_median.toFixed(0)}th</strong> {pick(lang, 'percentile', 'पर्सेंटाइल')} ({tt(lang, 'range')} {f.sm_pct_p10.toFixed(0)}–{f.sm_pct_p90.toFixed(0)}; {tt(lang, 'now')} {f.sm_pct_now?.toFixed(0) ?? '–'})</p>
-          </div>
+          </Tilt>
         ))}
       </div>
 

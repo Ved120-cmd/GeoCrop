@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Area, Bar, CartesianGrid, ComposedChart, Legend, Line, ReferenceArea, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { Reveal } from './motion'
 
 // Chart chrome per the dataviz method: recessive grid/axes, 2px lines, text in ink tokens, one axis per chart.
 const AXIS = { stroke: '#c3c2b7', tick: { fill: '#6d6d6d', fontSize: 12 }, tickLine: false }
@@ -14,14 +15,14 @@ export const NORMAL = '#898781'
 
 export function ChartCard({ title, subtitle, children, footer }: { title: string; subtitle?: ReactNode; children: ReactNode; footer?: ReactNode }) {
   return (
-    <figure className="card !p-6">
+    <Reveal as="figure" className="card !p-6">
       <figcaption className="mb-4">
         <h3 className="font-sans text-[16px] font-semibold tracking-normal">{title}</h3>
         {subtitle && <div className="mt-1 text-[13px] text-pewter">{subtitle}</div>}
       </figcaption>
       {children}
       {footer && <div className="mt-3 text-[13px] text-pewter">{footer}</div>}
-    </figure>
+    </Reveal>
   )
 }
 

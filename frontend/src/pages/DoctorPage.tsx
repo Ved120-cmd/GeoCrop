@@ -5,6 +5,7 @@ import { api } from '../lib/api'
 import { pick, useI18n } from '../lib/i18n'
 import { DRY } from '../lib/scales'
 import { Container, ErrorBox, Loading, MethodNote, SectionHeader } from '../components/ui'
+import { GrowBar, Reveal } from '../components/motion'
 
 interface CropInfo { crop: string; name: string; name_mr: string; conditions: string[] }
 interface Skill { n: number; top1: number; top3: number; top1_crop_given: number; healthy_vs_diseased_acc_crop_given: number; diseased_recall_crop_given: number; ece: number }
@@ -90,7 +91,7 @@ export default function DoctorPage() {
             </div>
 
             {run.data && top && (
-              <div className="card" aria-live="polite">
+              <Reveal className="card" aria-live="polite">
                 {!run.data.confident && (
                   <p className="mb-4 flex gap-2 rounded-[12px] bg-peach p-4 text-[14px]"><TriangleAlert size={18} className="shrink-0" />
                     {pick(lang, 'The model is not sure about this photo. Try a closer, sharper photo of a single leaf, or choose the crop. It may also be a problem the model does not know (pest, nutrient, water or spray damage).',
@@ -105,7 +106,7 @@ export default function DoctorPage() {
                   {run.data.predictions.map((p) => (
                     <li key={p.label}>
                       <div className="flex justify-between text-[14px]"><span>{pick(lang, `${cropName(p.crop)}: ${p.condition_name}`, `${p.crop_mr}: ${p.condition_name_mr}`)}</span><span className="tabular-nums font-medium">{pct(p.probability)}</span></div>
-                      <div className="mt-1 h-2 rounded-full bg-[#e9e7dd]"><div className="h-2 rounded-full" style={{ width: pct(p.probability), background: p.healthy ? 'var(--color-forest)' : DRY[1] }} /></div>
+                      <GrowBar className="mt-1" pct={p.probability * 100} color={p.healthy ? 'var(--color-forest)' : DRY[1]} />
                     </li>
                   ))}
                 </ul>
@@ -117,7 +118,7 @@ export default function DoctorPage() {
                     <li className="flex items-center gap-1.5"><Phone size={14} /> {pick(lang, 'Kisan Call Centre (free): 1800-180-1551', 'किसान कॉल सेंटर (मोफत): १८००-१८०-१५५१')}</li>
                   </ul>
                 </div>
-              </div>
+              </Reveal>
             )}
           </div>
           <aside className="space-y-4">

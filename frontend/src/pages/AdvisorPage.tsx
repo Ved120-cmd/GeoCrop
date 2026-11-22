@@ -9,6 +9,7 @@ import { useProfile } from '../lib/profile'
 import { DRY } from '../lib/scales'
 import { useDistrictGeo } from '../components/Maps'
 import { Container, ErrorBox, Loading, MethodNote, SectionHeader } from '../components/ui'
+import { GrowBar, Reveal } from '../components/motion'
 
 interface Rec {
   rank: number; crop: string; crop_mr: string; yield_type: string; suitability_class: 'S1' | 'S2' | 'S3' | 'N'; suitability: string; suitability_mr: string
@@ -36,7 +37,7 @@ function CropCard({ r, water }: { r: Rec; water: string }) {
   const maxSow = Math.max(...sows.map(([, v]) => v), 0.01)
   const fresh = r.yield_type?.startsWith('fresh')
   return (
-    <li className="card !p-6">
+    <Reveal as="li" className="card !p-6">
       <div className="flex flex-wrap items-start gap-3">
         <span className="font-serif text-[34px] font-light leading-none text-pewter">{r.rank}</span>
         <div className="min-w-0 flex-1">
@@ -65,7 +66,7 @@ function CropCard({ r, water }: { r: Rec; water: string }) {
             {sows.map(([s, v]) => (
               <li key={s} className="flex items-center gap-2 text-[13px]">
                 <span className="w-14 shrink-0">{fmtSow(s, lang)}</span>
-                <span className="h-2 flex-1 rounded-full bg-[#e9e7dd]"><span className="block h-2 rounded-full" style={{ width: `${(100 * v) / maxSow}%`, background: s === r.best_sow ? 'var(--color-forest)' : '#9aa79c' }} /></span>
+                <GrowBar className="flex-1" pct={(100 * v) / maxSow} color={s === r.best_sow ? 'var(--color-forest)' : '#9aa79c'} />
                 <span className="w-16 text-right tabular-nums">{(v * 4.047).toFixed(1)} q</span>
               </li>
             ))}
@@ -99,7 +100,7 @@ function CropCard({ r, water }: { r: Rec; water: string }) {
           <span>{r.model_note && pick(lang, r.model_note, r.model_note_mr ?? r.model_note)}
             {r.phenology && !r.phenology.plausible && pick(lang, ` Simulated season: ${r.phenology.simulated_days} days vs ${r.phenology.fao56_days} days in FAO-56 Table 11.`, ` सिम्युलेटेड हंगाम ${r.phenology.simulated_days} दिवस; FAO-56: ${r.phenology.fao56_days} दिवस.`)}</span></p>)}
       {fresh && <p className="mt-3 text-[12px] text-pewter">{pick(lang, 'Fresh-weight yield: not comparable in quintals with grain crops; compare the suitability class instead.', 'ताज्या वजनाचे उत्पादन: धान्य पिकांशी तुलना वर्गाने करा.')}</p>}
-    </li>
+    </Reveal>
   )
 }
 

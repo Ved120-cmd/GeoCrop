@@ -11,9 +11,9 @@ export function SectionHeader({ eyebrow, title, intro, action }: { eyebrow?: str
   return (
     <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
       <div className="max-w-[60ch]">
-        {eyebrow && <p className="eyebrow mb-2">{eyebrow}</p>}
-        <h1 className="text-[37px] md:text-[45px]">{title}</h1>
-        {intro && <p className="mt-3 text-[17px] text-graphite">{intro}</p>}
+        {eyebrow && <p className="eyebrow rise mb-2">{eyebrow}</p>}
+        <h1 className="rise text-[37px] [animation-delay:80ms] md:text-[45px]">{title}</h1>
+        {intro && <p className="rise mt-3 text-[17px] text-graphite [animation-delay:160ms]">{intro}</p>}
       </div>
       {action}
     </div>

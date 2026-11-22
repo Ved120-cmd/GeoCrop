@@ -107,7 +107,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           </div>
         )}
       </header>
-      <main id="main" key={loc.pathname} className="flex-1">{children}</main>
+      <main id="main" key={loc.pathname} className="page-enter flex-1">{children}</main>
       <Footer />
     </div>
   )

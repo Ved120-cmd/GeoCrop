@@ -23,6 +23,7 @@ from datetime import date, datetime, timedelta, timezone
 
 import pandas as pd
 import requests
+from geocrop.common.safe_http import safe_get
 
 from geocrop.config import GEE_PROJECT, RAW, ROOT, SERIES_DIR
 from geocrop.monitor import build_series, indices, weather
@@ -89,7 +90,7 @@ def power_recent(today, days=40):
                f"&latitude={lat}&start={start:%Y%m%d}&end={end:%Y%m%d}&format=JSON&time-standard=LST")
         for attempt in range(3):
             try:
-                j = requests.get(url, timeout=120).json()
+                j = safe_get(url, timeout=120).json()
                 p = pd.DataFrame(j["properties"]["parameter"]); p.index.name = "date"; p = p.reset_index()
                 p["date"] = pd.to_datetime(p.date, format="%Y%m%d")
                 p.insert(1, "lat", lat); p.insert(2, "lon", lon); p.insert(3, "elev_m", j["geometry"]["coordinates"][2])

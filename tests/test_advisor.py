@@ -46,7 +46,7 @@ def test_irrigation_never_hurts_median_yield():
 def test_advisor_api():
     from fastapi.testclient import TestClient
     from geocrop.api.main import app
-    c = TestClient(app)
+    c = TestClient(app, headers={"X-GeoCrop-Client": "web"})
     did = _a_district()
     r = c.get(f"/advisor/district/{did}", params={"season": "rabi", "water": "irrigated"}).json()
     assert r["recommendations"] and "ATTAINABLE" in r["value_type"].upper()

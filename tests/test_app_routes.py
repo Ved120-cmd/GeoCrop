@@ -6,7 +6,7 @@ from fastapi.testclient import TestClient
 @pytest.fixture(scope="module")
 def client():
     from geocrop.api.main import app
-    return TestClient(app)
+    return TestClient(app, headers={"X-GeoCrop-Client": "web"})
 
 
 def _db_up():

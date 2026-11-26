@@ -39,7 +39,7 @@ def test_diagnose_and_api():
     m = pd.read_parquet(MAN)
     row = m[(m.split == "test_lab") & (m.label == "tomato__late_blight")].iloc[0]
     data = open(row.path, "rb").read()
-    c = TestClient(app)
+    c = TestClient(app, headers={"X-GeoCrop-Client": "web"})
     r = c.post("/doctor/diagnose", files={"image": ("leaf.jpg", data, "image/jpeg")}, data={"crop": "tomato"}).json()
     assert len(r["predictions"]) == 3 and all(p["crop"] == "tomato" for p in r["predictions"])
     assert abs(sum(p["probability"] for p in r["predictions"]) - 1) < 0.2

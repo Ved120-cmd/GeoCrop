@@ -8,7 +8,7 @@ import uuid
 from datetime import date, datetime, timezone
 
 from dotenv import load_dotenv
-from sqlalchemy import (CheckConstraint, Date, DateTime, Float, ForeignKey, Integer, String, create_engine)
+from sqlalchemy import (URL, CheckConstraint, Date, DateTime, Float, ForeignKey, Integer, String, create_engine)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, sessionmaker
 
@@ -17,10 +17,24 @@ from geocrop.config import ROOT
 load_dotenv(ROOT / ".env")
 
 
-def db_url():
+def db_url(admin: bool = False):
+    """Connection URL. The API uses the least-privilege app login (GEOCROP_DB_APP_*, created by
+    scripts/db/create_app_role.py); only schema setup uses the admin/owner login (GEOCROP_DB_USER)."""
     e = os.environ
-    return (f"postgresql+psycopg://{e['GEOCROP_DB_USER']}:{e['GEOCROP_DB_PASSWORD']}@{e.get('GEOCROP_DB_HOST', 'localhost')}:"
-            f"{e.get('GEOCROP_DB_PORT', '5433')}/{e.get('GEOCROP_DB_NAME', 'geocrop')}")
+    if admin or not e.get("GEOCROP_DB_APP_USER"):
+        user, pw = e["GEOCROP_DB_USER"], e["GEOCROP_DB_PASSWORD"]
+    else:
+        user, pw = e["GEOCROP_DB_APP_USER"], e["GEOCROP_DB_APP_PASSWORD"]
+    return URL.create("postgresql+psycopg", username=user, password=pw, host=e.get("GEOCROP_DB_HOST", "localhost"),
+                      port=int(e.get("GEOCROP_DB_PORT", "5433")), database=e.get("GEOCROP_DB_NAME", "geocrop"))
+
+
+def uses_app_role() -> bool:
+    return bool(os.environ.get("GEOCROP_DB_APP_USER"))
+
+
+def admin_engine():
+    return create_engine(db_url(admin=True), pool_pre_ping=True, future=True)
 
 
 engine = create_engine(db_url(), pool_pre_ping=True, future=True)
@@ -92,7 +106,8 @@ class IrrigationEvent(Base):
 
 
 def init_db():
-    Base.metadata.create_all(engine)
+    """Create tables as the owner. Run scripts/db/create_app_role.py afterwards to (re)grant the app login."""
+    Base.metadata.create_all(admin_engine())
 
 
 if __name__ == "__main__":

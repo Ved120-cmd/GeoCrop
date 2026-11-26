@@ -214,6 +214,15 @@ reports/               readiness report, dataset/model audits, download logs, mo
 * **Performance:** 3 precompute processes thrashed memory (155 min per district). One process with 10 engine processes takes 3 min per district.
 * **Laptop:** the laptop sleeping overnight paused the run; keep it awake during long jobs.
 
+### Phase 9: Security hardening (2026-11-26)
+* **SQL injection:**
+  * The API now runs as the least-privilege `geocrop_app` login: read and write on rows only, no DDL, no superuser, 5 s statement timeout. Previously it connected as a superuser.
+  * IDs are UUID-validated before any query.
+  * A test forbids raw SQL in the API code.
+* **CSRF:** write requests need an allow-listed `Origin` or `Referer` plus the `X-GeoCrop-Client: web` header. CORS is narrowed, and security response headers are added.
+* **SSRF:** all outbound HTTP goes through `geocrop/common/safe_http.py` (https, host allow-list, public IPs only, redirects re-checked). This closes a real path: the geoBoundaries API response chose the download URL.
+* Details are in docs/SECURITY.md. Tests: 69, with one data-staleness check failing because SMAP is 10 days old (the daily update isn't scheduled).
+
 ---
 
 ## 5. Key decisions and conventions
@@ -232,10 +241,11 @@ reports/               readiness report, dataset/model audits, download logs, mo
 
 ```bash
 scripts\db\start_db.cmd                                   # PostgreSQL (after every reboot)
+.venv/Scripts/python scripts/db/create_app_role.py        # once: least-privilege DB login for the API (docs/SECURITY.md)
 .venv/Scripts/uvicorn geocrop.api.main:app --port 8000    # API (docs: http://localhost:8000/docs)
 cd frontend && npm run dev                                # web app: http://localhost:5173
 .venv/Scripts/python -m geocrop.monitor.update            # daily data update (~10-15 min)
-.venv/Scripts/python -m pytest tests -p no:cacheprovider  # tests (43; DB tests skip if PostgreSQL is down)
+.venv/Scripts/python -m pytest tests -p no:cacheprovider  # tests (69; DB tests skip if PostgreSQL is down)
 ```
 
 ---

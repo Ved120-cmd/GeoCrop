@@ -12,7 +12,7 @@ pytestmark = pytest.mark.skipif(not (INDEX_DIR / "vegetation.parquet").exists(),
 @pytest.fixture(scope="module")
 def client():
     from geocrop.api.main import app
-    return TestClient(app)
+    return TestClient(app, headers={"X-GeoCrop-Client": "web"})
 
 
 def test_districts(client):

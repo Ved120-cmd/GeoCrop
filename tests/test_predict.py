@@ -68,7 +68,7 @@ def test_forecast_output_ranges():
 @pytest.mark.skipif(not FC.exists(), reason="run geocrop.predict.infer first")
 def test_predict_api():
     from geocrop.api.main import app
-    c = TestClient(app)
+    c = TestClient(app, headers={"X-GeoCrop-Client": "web"})
     o = c.get("/predict/overview", params={"lead": 32}).json()
     assert o["lead_days"] == 32 and len(o["districts"]) == 36 and "PROXY" in o["value_type"]
     assert c.get("/predict/overview", params={"lead": 7}).status_code == 422

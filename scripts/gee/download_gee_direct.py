@@ -18,6 +18,9 @@ from pathlib import Path
 
 import requests
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # project root, for the geocrop package
+from geocrop.common.safe_http import safe_get
+
 ROOT = Path(__file__).resolve().parents[2]
 SCRATCH = Path(os.environ.get("GEOCROP_SCRATCH", r"D:\geocrop_work\tmp\gee_tiles"))
 LOG = ROOT / "reports/download_logs/download_log.csv"
@@ -109,7 +112,7 @@ def tiles_for(bounds, transform, nbands, bpp):
 def fetch_tile(url, dest, retries=5):
     for i in range(retries):
         try:
-            r = requests.get(url, timeout=300)
+            r = safe_get(url, timeout=300)
             if r.status_code == 429:
                 time.sleep(30 * (i + 1)); continue
             r.raise_for_status()

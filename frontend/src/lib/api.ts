@@ -7,7 +7,8 @@ export class ApiError extends Error {
 
 async function req<T>(path: string, init?: RequestInit): Promise<T> {
   // FormData bodies must not get a JSON content type (the browser sets the multipart boundary)
-  const headers = init?.body instanceof FormData ? undefined : { 'Content-Type': 'application/json' }
+  // X-GeoCrop-Client: the API rejects state-changing requests without it (CSRF protection; see geocrop/api/security.py)
+  const headers: Record<string, string> = init?.body instanceof FormData ? { 'X-GeoCrop-Client': 'web' } : { 'Content-Type': 'application/json', 'X-GeoCrop-Client': 'web' }
   const r = await fetch(`/api${path}`, { headers, ...init })
   if (!r.ok) {
     let msg = `${r.status} ${r.statusText}`

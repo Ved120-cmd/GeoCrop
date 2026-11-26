@@ -253,11 +253,16 @@ def _profile_out(f: Farmer):
                                       for i in fm.irrigation]} for fm in f.farms]}
 
 
-def _load(session, farmer_id):
+def _uuid(value: str, what: str) -> uuid.UUID:
+    """Parse an id from the URL; anything that is not a UUID is simply 'not found' (never reaches SQL as text)."""
     try:
-        fid = uuid.UUID(farmer_id)
-    except ValueError:
-        raise HTTPException(404, "profile not found")
+        return uuid.UUID(value)
+    except (ValueError, TypeError, AttributeError):
+        raise HTTPException(404, f"{what} not found")
+
+
+def _load(session, farmer_id):
+    fid = _uuid(farmer_id, "profile")
     f = session.execute(select(Farmer).where(Farmer.id == fid).options(
         selectinload(Farmer.farms).selectinload(Farm.crops), selectinload(Farmer.farms).selectinload(Farm.irrigation))).scalar_one_or_none()
     if not f:
@@ -309,7 +314,7 @@ def delete_profile(farmer_id: str):
 @router.post("/farms/{farm_id}/irrigation", status_code=201, tags=["profiles"])
 def add_irrigation(farm_id: str, ev: IrrigationIn):
     with SessionLocal() as s, s.begin():
-        fm = s.get(Farm, uuid.UUID(farm_id))
+        fm = s.get(Farm, _uuid(farm_id, "farm"))
         if not fm:
             raise HTTPException(404, "farm not found")
         s.add(IrrigationEvent(farm_id=fm.id, **ev.model_dump()))
@@ -319,8 +324,8 @@ def add_irrigation(farm_id: str, ev: IrrigationIn):
 @router.delete("/farms/{farm_id}/irrigation/{event_id}", status_code=204, tags=["profiles"])
 def delete_irrigation(farm_id: str, event_id: str):
     with SessionLocal() as s, s.begin():
-        ev = s.get(IrrigationEvent, uuid.UUID(event_id))
-        if not ev or str(ev.farm_id) != farm_id:
+        ev = s.get(IrrigationEvent, _uuid(event_id, "event"))
+        if not ev or ev.farm_id != _uuid(farm_id, "farm"):
             raise HTTPException(404, "event not found")
         s.delete(ev)
 
@@ -329,7 +334,7 @@ def delete_irrigation(farm_id: str, event_id: str):
 def farm_nowcast(farm_id: str, crop_id: Optional[str] = None):
     """Field stress ESTIMATE for the farm's crop, using its district, sowing date and logged irrigation."""
     with SessionLocal() as s:
-        fm = s.execute(select(Farm).where(Farm.id == uuid.UUID(farm_id)).options(selectinload(Farm.crops), selectinload(Farm.irrigation))).scalar_one_or_none()
+        fm = s.execute(select(Farm).where(Farm.id == _uuid(farm_id, "farm")).options(selectinload(Farm.crops), selectinload(Farm.irrigation))).scalar_one_or_none()
         if not fm:
             raise HTTPException(404, "farm not found")
         crops = [c for c in fm.crops if (crop_id is None or str(c.id) == crop_id)]

@@ -23,6 +23,7 @@ reports/             audit outputs and GEOCROP_READINESS_REPORT.md
 
 ## Running the app (database, API, web)
 
+0. **Local config**: copy `.env.example` to `.env` and set `GEOCROP_DB_PASSWORD` (and the paths, if yours differ).
 1. **PostgreSQL** (portable 17.12; binaries on D:, data in `db/`, localhost:5433 only, credentials in `.env`):
    ```bash
    scripts\db\start_db.cmd

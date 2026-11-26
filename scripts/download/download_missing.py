@@ -18,6 +18,9 @@ from pathlib import Path
 
 import requests
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # project root, for the geocrop package
+from geocrop.common.safe_http import safe_get, safe_request
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "audit"))
 from catalog import CATALOG, MH_BBOX, ROOT, SG_DEPTHS, SG_PROPS  # noqa: E402
 
@@ -63,7 +66,7 @@ def fetch(url, dest: Path, res, lic="", expect_sha=None, method="GET", data=None
             hdr = {}
             if method == "GET" and part.exists():
                 hdr["Range"] = f"bytes={part.stat().st_size}-"
-            r = S.request(method, url, data=data, headers=hdr, stream=True, timeout=timeout)
+            r = safe_request(method, url, session=S, data=data, headers=hdr, stream=True, timeout=timeout)
             if r.status_code == 429:
                 wait = int(r.headers.get("Retry-After", 60 * (i + 1)))
                 print(f"  429 rate-limited; waiting {wait}s"); time.sleep(wait); continue
@@ -91,7 +94,7 @@ def dl_boundaries():
     out = RAW / "boundaries/geoboundaries"
     paths = {}
     for lvl in ("ADM1", "ADM2"):
-        meta = S.get(f"https://www.geoboundaries.org/api/current/gbOpen/IND/{lvl}/", timeout=60).json()
+        meta = safe_get(f"https://www.geoboundaries.org/api/current/gbOpen/IND/{lvl}/", session=S, timeout=60).json()
         json.dump(meta, open(out.mkdir(parents=True, exist_ok=True) or out / f"IND_{lvl}_metadata.json", "w"), indent=1)
         paths[lvl] = fetch(meta["gjDownloadURL"], out / f"geoBoundaries-IND-{lvl}.geojson", f"E18a geoBoundaries IND {lvl} ({meta['boundaryYearRepresented']})", lic, min_bytes=10000)
     if not all(paths.values()): return
@@ -271,7 +274,7 @@ def dl_dem():
 # ------------------------------------------------------------------ S35 AquaCrop
 def dl_aquacrop():
     lic = "(c) FAO 2026 - all rights reserved; non-commercial use authorised free on request (copyright@fao.org)"
-    rel = S.get("https://api.github.com/repos/un-fao/fao-AquaCrop/releases/tags/v7.3", timeout=60).json()
+    rel = safe_get("https://api.github.com/repos/un-fao/fao-AquaCrop/releases/tags/v7.3", session=S, timeout=60).json()
     out = RAW / "simulation/aquacrop"
     json.dump(rel, open(out / "github_release_v7.3.json", "w"), indent=1)
     for a in rel["assets"]:

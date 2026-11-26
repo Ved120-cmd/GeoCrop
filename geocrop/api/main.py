@@ -23,8 +23,13 @@ app = FastAPI(title="GeoCrop Monitor API", version="0.1.0",
 
 from fastapi.middleware.cors import CORSMiddleware
 
-app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
-                   allow_methods=["*"], allow_headers=["*"])
+from geocrop.api.security import CLIENT_HEADER, CSRFMiddleware, SecurityHeadersMiddleware, allowed_origins  # noqa: E402
+
+# Order: added last = runs first. CORS answers preflights; CSRF then checks state-changing requests.
+app.add_middleware(SecurityHeadersMiddleware)
+app.add_middleware(CSRFMiddleware, origins=allowed_origins())
+app.add_middleware(CORSMiddleware, allow_origins=allowed_origins(), allow_credentials=False,
+                   allow_methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["Content-Type", CLIENT_HEADER], max_age=600)
 
 VAR_PRODUCT = {v: p for p, (_, _, vs) in PRODUCTS.items() for v in vs if p != "MOD16A2"}
 

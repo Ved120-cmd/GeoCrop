@@ -1,0 +1,28 @@
+# Runtime dependencies of the GeoCrop API (geocrop/api). Pinned to the versions tested locally.
+# The research/data pipeline (Earth Engine, xarray, ...) is NOT needed to serve the API.
+# PyTorch is the CPU build (installed with --extra-index-url https://download.pytorch.org/whl/cpu).
+fastapi==0.162.5
+starlette==1.10.0
+uvicorn==0.54.0
+pydantic==2.14.3
+python-multipart==0.0.20
+python-dotenv==1.2.4
+numpy==2.0.2
+pandas==3.1.1
+pyarrow==26.0.1
+geopandas==1.2.0
+shapely==2.2.0
+pyproj==3.7.2
+pyogrio==0.13.0
+rasterio==1.4.4
+SQLAlchemy==2.1.8
+psycopg[binary]==3.3.9
+requests==2.34.2
+lightgbm==4.5.0
+pillow==13.0.0
+torch==2.5.1+cpu
+torchvision==0.20.1+cpu
+timm==1.0.12
+huggingface-hub==0.26.5
+safetensors==0.8.0
+PyYAML==6.0.3

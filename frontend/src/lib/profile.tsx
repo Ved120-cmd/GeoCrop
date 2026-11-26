@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, type ReactNode } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { api, ApiError, type Profile } from './api'
+import { PROFILES_ENABLED } from './config'
 
 // No login yet: the profile id is remembered in this browser; the profile itself lives in PostgreSQL.
 const KEY = 'geocrop.profileId'
@@ -16,10 +17,10 @@ const P = createContext<Ctx | null>(null)
 
 export function ProfileProvider({ children }: { children: ReactNode }) {
   const qc = useQueryClient()
-  const [profileId, setId] = useState<string | null>(() => { try { return localStorage.getItem(KEY) } catch { return null } })
+  const [profileId, setId] = useState<string | null>(() => { if (!PROFILES_ENABLED) return null; try { return localStorage.getItem(KEY) } catch { return null } })
   const q = useQuery({
     queryKey: ['profile', profileId],
-    enabled: !!profileId,
+    enabled: PROFILES_ENABLED && !!profileId,
     queryFn: async () => {
       try { return await api.get<Profile>(`/profiles/${profileId}`) } catch (e) {
         if (e instanceof ApiError && e.status === 404) { setProfileId(null); return undefined }

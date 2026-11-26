@@ -10,6 +10,7 @@ import { DRY } from '../lib/scales'
 import { useDistrictGeo } from '../components/Maps'
 import { Container, ErrorBox, Loading, MethodNote, SectionHeader } from '../components/ui'
 import { GrowBar, Reveal } from '../components/motion'
+import { API_BASE } from '../lib/config'
 
 interface Rec {
   rank: number; crop: string; crop_mr: string; yield_type: string; suitability_class: 'S1' | 'S2' | 'S3' | 'N'; suitability: string; suitability_mr: string
@@ -92,7 +93,7 @@ function CropCard({ r, water }: { r: Rec; water: string }) {
         </div>
       </div>
       <div className="mt-5 flex flex-wrap gap-2">
-        {r.ipm_package && <a className="btn-ghost !py-2" href={`/api/advisor/ipm/${r.crop}`} target="_blank" rel="noreferrer"><BookOpen size={15} /> {pick(lang, 'Official pest management guide (NIPHM)', 'अधिकृत कीड व्यवस्थापन मार्गदर्शिका')}</a>}
+        {r.ipm_package && <a className="btn-ghost !py-2" href={`${API_BASE}/advisor/ipm/${r.crop}`} target="_blank" rel="noreferrer"><BookOpen size={15} /> {pick(lang, 'Official pest management guide (NIPHM)', 'अधिकृत कीड व्यवस्थापन मार्गदर्शिका')}</a>}
         <Link className="btn-ghost !py-2" to="/simulator"><FlaskConical size={15} /> {pick(lang, 'Try your own plan in the simulator', 'सिम्युलेटरमध्ये तुमची योजना तपासा')}</Link>
       </div>
       {(r.model_note || (r.phenology && !r.phenology.plausible)) && (

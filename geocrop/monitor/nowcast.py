@@ -289,11 +289,16 @@ def nowcast(district_id, crop_name, sow: date, today: date, irrigation=None, hor
     d = res.daily
     today_row = d[d.date == pd.Timestamp(today)]
     fut = d[(d.date > pd.Timestamp(today)) & (d.get("ks", pd.Series(dtype=float)) < 0.999)] if "ks" in d else d.iloc[0:0]
+    # after harvest (or before data exist) today's row has no stress value: report None instead of crashing
+    tks = None if today_row.empty else today_row.iloc[0].get("ks")
+    tks = None if tks is None or pd.isna(tks) else float(tks)
+    tst = None if today_row.empty else today_row.iloc[0].get("stress")
+    tst = None if tst is None or (isinstance(tst, float) and pd.isna(tst)) else str(tst)
     res.meta.update(initialised_from=f"SMAP L4 root-zone on {t0.date()} (rel. wetness {1 - dr0:.2f}; district SMAP p5={p5:.3f}, p95={p95:.3f})",
                     today=str(today),
-                    today_stress=None if today_row.empty else str(today_row.iloc[0].get("stress")),
-                    today_ks=None if today_row.empty else float(today_row.iloc[0].get("ks")),
-                    days_until_stress=(0 if (not today_row.empty and today_row.iloc[0].get("ks", 1) < 0.999)
+                    today_stress=tst,
+                    today_ks=tks,
+                    days_until_stress=(0 if (tks is not None and tks < 0.999)
                                        else None if fut.empty else int((fut.date.min() - pd.Timestamp(today)).days)),
                     irrigation_assumption=("irrigation events supplied by user" if irrigation
                                            else "NO irrigation assumed - stress for irrigated fields will be overstated"),

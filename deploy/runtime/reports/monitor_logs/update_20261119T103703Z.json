@@ -1,0 +1,176 @@
+{
+ "started": "2026-11-19T10:25:47+00:00",
+ "today": "2026-11-19",
+ "steps": {
+  "gee_MOD13Q1": {
+   "ok": true,
+   "result": {
+    "product": "MOD13Q1",
+    "from_date": "2026-10-17",
+    "latest_after": "2026-10-16",
+    "returncode": 0,
+    "tail": [
+     "done {'ok': 0, 'skip': 0, 'fail': 0}"
+    ]
+   },
+   "seconds": 26.0
+  },
+  "gee_MOD11A2": {
+   "ok": true,
+   "result": {
+    "product": "MOD11A2",
+    "from_date": "2026-11-02",
+    "latest_after": "2026-11-01",
+    "returncode": 0,
+    "tail": [
+     "done {'ok': 0, 'skip': 0, 'fail': 0}"
+    ]
+   },
+   "seconds": 23.9
+  },
+  "gee_MOD16A2": {
+   "ok": true,
+   "result": {
+    "product": "MOD16A2",
+    "from_date": "2026-10-25",
+    "latest_after": "2026-11-01",
+    "returncode": 0,
+    "tail": [
+     "done {'ok': 1, 'skip': 0, 'fail': 0}"
+    ]
+   },
+   "seconds": 69.0
+  },
+  "gee_SMAP": {
+   "ok": true,
+   "result": {
+    "product": "SMAP",
+    "from_date": "2026-11-11",
+    "latest_after": "2026-11-16",
+    "returncode": 0,
+    "tail": [
+     "done {'ok': 6, 'skip': 3, 'fail': 0}"
+    ]
+   },
+   "seconds": 50.9
+  },
+  "gee_IMERG": {
+   "ok": true,
+   "result": {
+    "product": "IMERG",
+    "from_date": "2026-11-12",
+    "latest_after": "2026-11-18",
+    "returncode": 0,
+    "tail": [
+     "done {'ok': 7, 'skip': 1, 'fail': 0}"
+    ]
+   },
+   "seconds": 43.6
+  },
+  "imerg_finalise": {
+   "ok": true,
+   "result": {
+    "imerg_days_finalised": 5
+   },
+   "seconds": 132.1
+  },
+  "ecmwf_forecast": {
+   "ok": true,
+   "result": {
+    "run": "2026-11-19 00:00:00",
+    "days": 10
+   },
+   "seconds": 281.2
+  },
+  "series_MOD13Q1": {
+   "ok": true,
+   "result": {
+    "new_dates": 0
+   },
+   "seconds": 0.1
+  },
+  "series_MOD11A2": {
+   "ok": true,
+   "result": {
+    "new_dates": 0
+   },
+   "seconds": 0.4
+  },
+  "series_MOD16A2": {
+   "ok": true,
+   "result": {
+    "new_dates": 1
+   },
+   "seconds": 1.5
+  },
+  "series_SMAP": {
+   "ok": true,
+   "result": {
+    "new_dates": 6
+   },
+   "seconds": 0.9
+  },
+  "series_IMERG": {
+   "ok": true,
+   "result": {
+    "new_dates": 12
+   },
+   "seconds": 0.9
+  },
+  "weather_power": {
+   "ok": true,
+   "result": {
+    "rows": 156276
+   },
+   "seconds": 2.5
+  },
+  "indices": {
+   "ok": true,
+   "result": "rebuilt",
+   "seconds": 25.1
+  },
+  "district_nowcast": {
+   "ok": true,
+   "result": {
+    "moderate": 24,
+    "mild": 7,
+    "severe": 5
+   },
+   "seconds": 17.7
+  }
+ },
+ "freshness": {
+  "MOD13Q1": {
+   "latest": "2026-10-16",
+   "status_latest": "final",
+   "median_valid_frac_latest": 0.853
+  },
+  "MOD11A2": {
+   "latest": "2026-11-01",
+   "status_latest": "final",
+   "median_valid_frac_latest": 0.996
+  },
+  "MOD16A2": {
+   "latest": "2026-11-01",
+   "status_latest": "provisional",
+   "median_valid_frac_latest": 0.927
+  },
+  "MOD16A2GF": {
+   "latest": "2025-12-27",
+   "status_latest": "final",
+   "median_valid_frac_latest": 0.927
+  },
+  "SMAP": {
+   "latest": "2026-11-16",
+   "status_latest": "final",
+   "median_valid_frac_latest": 1.0
+  },
+  "IMERG": {
+   "latest": "2026-11-18",
+   "status_latest": "provisional",
+   "median_valid_frac_latest": 1.0
+  }
+ },
+ "finished": "2026-11-19T10:37:03+00:00",
+ "all_ok": true
+}

@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import { Container, Loading } from './components/ui'
+import { PROFILES_ENABLED } from './lib/config'
 
 // Pages are code-split so the home page loads without the map and chart libraries.
 const Onboarding = lazy(() => import('./pages/Onboarding'))
@@ -21,12 +22,12 @@ export default function App() {
       <Suspense fallback={<Container><Loading /></Container>}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/onboarding" element={<Onboarding />} />
-        <Route path="/profile" element={<Onboarding edit />} />
+        <Route path="/onboarding" element={PROFILES_ENABLED ? <Onboarding /> : <Navigate to="/" replace />} />
+        <Route path="/profile" element={PROFILES_ENABLED ? <Onboarding edit /> : <Navigate to="/" replace />} />
         <Route path="/monitor" element={<MonitorOverview />} />
         <Route path="/monitor/region/:region" element={<MonitorOverview />} />
         <Route path="/monitor/district/:id" element={<DistrictPage />} />
-        <Route path="/my-farm" element={<MyFarm />} />
+        <Route path="/my-farm" element={PROFILES_ENABLED ? <MyFarm /> : <Navigate to="/" replace />} />
         <Route path="/soil" element={<SoilPage />} />
         <Route path="/predict" element={<PredictPage />} />
         <Route path="/predict/district/:id" element={<PredictPage />} />

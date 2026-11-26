@@ -1,4 +1,5 @@
 // Thin typed client for the GeoCrop FastAPI backend (proxied at /api by Vite).
+import { API_BASE } from './config'
 
 export class ApiError extends Error {
   status: number
@@ -9,7 +10,7 @@ async function req<T>(path: string, init?: RequestInit): Promise<T> {
   // FormData bodies must not get a JSON content type (the browser sets the multipart boundary)
   // X-GeoCrop-Client: the API rejects state-changing requests without it (CSRF protection; see geocrop/api/security.py)
   const headers: Record<string, string> = init?.body instanceof FormData ? { 'X-GeoCrop-Client': 'web' } : { 'Content-Type': 'application/json', 'X-GeoCrop-Client': 'web' }
-  const r = await fetch(`/api${path}`, { headers, ...init })
+  const r = await fetch(`${API_BASE}${path}`, { headers, ...init })
   if (!r.ok) {
     let msg = `${r.status} ${r.statusText}`
     try { const j = await r.json(); msg = typeof j.detail === 'string' ? j.detail : JSON.stringify(j.detail) } catch { /* not json */ }

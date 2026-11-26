@@ -5,6 +5,7 @@ import { Menu, X, CircleCheck, UserRound } from 'lucide-react'
 import { api, type Overview } from '../lib/api'
 import { useI18n, type TKey } from '../lib/i18n'
 import { useProfile } from '../lib/profile'
+import { PROFILES_ENABLED } from '../lib/config'
 
 export const NAV: { to: string; label: TKey }[] = [
   { to: '/monitor', label: 'nav_monitor' },
@@ -89,9 +90,11 @@ export default function Layout({ children }: { children: ReactNode }) {
           </nav>
           <div className="flex items-center gap-2">
             <div className="hidden sm:block"><LangToggle /></div>
-            <Link to={profile ? '/my-farm' : '/onboarding'} className="btn-white hidden whitespace-nowrap !px-4 !py-2 sm:inline-flex">
-              <UserRound size={16} strokeWidth={1.75} /> {profile ? t('nav_myfarm') : t('im_farmer')}
-            </Link>
+            {PROFILES_ENABLED && (
+              <Link to={profile ? '/my-farm' : '/onboarding'} className="btn-white hidden whitespace-nowrap !px-4 !py-2 sm:inline-flex">
+                <UserRound size={16} strokeWidth={1.75} /> {profile ? t('nav_myfarm') : t('im_farmer')}
+              </Link>
+            )}
             <button className="rounded-full p-2 text-white xl:hidden" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? t('close') : t('menu')}>
               {open ? <X /> : <Menu />}
             </button>
@@ -101,7 +104,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <div className="border-t border-white/10 bg-forest px-4 pb-4 xl:hidden" onClick={() => setOpen(false)}>
             <nav className="flex flex-col gap-1 pt-2" aria-label="Mobile">
               {NAV.map((n) => <NavLink key={n.to} to={n.to} className={navCls}>{t(n.label)}</NavLink>)}
-              <NavLink to={profile ? '/my-farm' : '/onboarding'} className={navCls}>{profile ? t('nav_myfarm') : t('im_farmer')}</NavLink>
+              {PROFILES_ENABLED && <NavLink to={profile ? '/my-farm' : '/onboarding'} className={navCls}>{profile ? t('nav_myfarm') : t('im_farmer')}</NavLink>}
             </nav>
             <div className="mt-3" onClick={(e) => e.stopPropagation()}><LangToggle /></div>
           </div>

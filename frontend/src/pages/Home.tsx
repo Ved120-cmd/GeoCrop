@@ -7,6 +7,7 @@ import { useProfile } from '../lib/profile'
 import { api, type Overview } from '../lib/api'
 import { Container } from '../components/ui'
 import { CountUp, Reveal, Tilt } from '../components/motion'
+import { PROFILES_ENABLED } from '../lib/config'
 
 const Hero3D = lazy(() => import('../components/Hero3D'))
 
@@ -57,7 +58,9 @@ export default function Home() {
             <h1 className="rise max-w-[16ch] text-[42px] leading-[1.04] [animation-delay:120ms] md:text-[60px] lg:text-[68px] mx-auto lg:mx-0">{t('hero_title')}</h1>
             <p className="rise mx-auto mt-6 max-w-[52ch] text-[17px] text-white/85 [animation-delay:260ms] lg:mx-0">{t('hero_body')}</p>
             <div className="rise mt-9 flex flex-wrap justify-center gap-3 [animation-delay:400ms] lg:justify-start">
-              <Link to={profile ? '/my-farm' : '/onboarding'} className="btn bg-lime text-ink hover:bg-white">{profile ? t('nav_myfarm') : t('im_farmer')}</Link>
+              {PROFILES_ENABLED
+                ? <Link to={profile ? '/my-farm' : '/onboarding'} className="btn bg-lime text-ink hover:bg-white">{profile ? t('nav_myfarm') : t('im_farmer')}</Link>
+                : <Link to="/crop-advisor" className="btn bg-lime text-ink hover:bg-white">{pick(lang, 'Find crops for my district', 'माझ्या जिल्ह्यासाठी पिके')}</Link>}
               <Link to="/monitor" className="btn-ghost-light group">{t('explore')} <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" /></Link>
             </div>
           </div>

@@ -1,0 +1,641 @@
+{
+ "built": "2026-11-26T06:21:47+00:00",
+ "total_mb": 98.1,
+ "files": [
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2015.parquet",
+   "bytes": 260946,
+   "sha256": "b8dc30dd76584c8f"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2016.parquet",
+   "bytes": 257659,
+   "sha256": "02a90cc449811b44"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2017.parquet",
+   "bytes": 247490,
+   "sha256": "a77c7a8acbaa23bf"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2018.parquet",
+   "bytes": 244408,
+   "sha256": "6633284353c34332"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2019.parquet",
+   "bytes": 267326,
+   "sha256": "af5f61cc36f3203d"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2020.parquet",
+   "bytes": 286372,
+   "sha256": "8091f102916c15f9"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2021.parquet",
+   "bytes": 296771,
+   "sha256": "f3c3418c55e6471c"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2022.parquet",
+   "bytes": 266252,
+   "sha256": "3905ca5abc4cec00"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2023.parquet",
+   "bytes": 254388,
+   "sha256": "663a861ae0240cee"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2024.parquet",
+   "bytes": 283624,
+   "sha256": "6253003033bb35aa"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2025.parquet",
+   "bytes": 275276,
+   "sha256": "93752c96dacb39a4"
+  },
+  {
+   "path": "data/processed/monitor/district_series/IMERG/year=2026.parquet",
+   "bytes": 284203,
+   "sha256": "0322979cf02535ce"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2015.parquet",
+   "bytes": 143446,
+   "sha256": "e3ea5b521a1bbd0e"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2016.parquet",
+   "bytes": 146363,
+   "sha256": "dee7750ad59c8cb6"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2017.parquet",
+   "bytes": 140169,
+   "sha256": "433ff0d99452ff50"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2018.parquet",
+   "bytes": 136182,
+   "sha256": "28db5ecefc2cdd10"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2019.parquet",
+   "bytes": 139905,
+   "sha256": "1b0bea3c596dc1e5"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2020.parquet",
+   "bytes": 136985,
+   "sha256": "a5391bfe582f307d"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2021.parquet",
+   "bytes": 145608,
+   "sha256": "75395ed997fcf20a"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2022.parquet",
+   "bytes": 131824,
+   "sha256": "b3ea75e59fbf3c6d"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2023.parquet",
+   "bytes": 132220,
+   "sha256": "54764e9d27300941"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2024.parquet",
+   "bytes": 135816,
+   "sha256": "b3f62aa236fea74e"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2025.parquet",
+   "bytes": 144167,
+   "sha256": "ae143f27be2b2c7f"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD11A2/year=2026.parquet",
+   "bytes": 144163,
+   "sha256": "21d2cda39e4ba896"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2015.parquet",
+   "bytes": 98616,
+   "sha256": "d38ba976befb7d7f"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2016.parquet",
+   "bytes": 117946,
+   "sha256": "81d83b78f3e4ecdd"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2017.parquet",
+   "bytes": 119510,
+   "sha256": "672fc8d0a52b4d00"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2018.parquet",
+   "bytes": 114308,
+   "sha256": "a0010b3d7698b302"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2019.parquet",
+   "bytes": 118608,
+   "sha256": "b9edf333dee37126"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2020.parquet",
+   "bytes": 121295,
+   "sha256": "d22d7465711f4b6f"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2021.parquet",
+   "bytes": 119761,
+   "sha256": "151fa252ff9640ed"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2022.parquet",
+   "bytes": 118548,
+   "sha256": "b208c1a0b838dea9"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2023.parquet",
+   "bytes": 118631,
+   "sha256": "f40f349418205193"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2024.parquet",
+   "bytes": 117883,
+   "sha256": "dc6cef67de4cfcce"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2025.parquet",
+   "bytes": 120880,
+   "sha256": "096d0ef24baa531b"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD13Q1/year=2026.parquet",
+   "bytes": 102137,
+   "sha256": "c21d12c89a549ac6"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2/year=2026.parquet",
+   "bytes": 197493,
+   "sha256": "953dbef8a8e36539"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2015.parquet",
+   "bytes": 182416,
+   "sha256": "67a023498ac5c40f"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2016.parquet",
+   "bytes": 180112,
+   "sha256": "54a7c38f1d7370de"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2017.parquet",
+   "bytes": 230049,
+   "sha256": "c0abf029830c07be"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2018.parquet",
+   "bytes": 228526,
+   "sha256": "111787f5a2b74f34"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2019.parquet",
+   "bytes": 225441,
+   "sha256": "3d400dd8126351fa"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2020.parquet",
+   "bytes": 228636,
+   "sha256": "654f5206065dc223"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2021.parquet",
+   "bytes": 230165,
+   "sha256": "757702479bcdf045"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2022.parquet",
+   "bytes": 227699,
+   "sha256": "26d42af8ad30703f"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2023.parquet",
+   "bytes": 234538,
+   "sha256": "56517117a3b6f4f5"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2024.parquet",
+   "bytes": 229769,
+   "sha256": "b09fca5f5559ce4f"
+  },
+  {
+   "path": "data/processed/monitor/district_series/MOD16A2GF/year=2025.parquet",
+   "bytes": 230278,
+   "sha256": "3e2b4564d2016f22"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2015.parquet",
+   "bytes": 936088,
+   "sha256": "b1bd2b0a0934617b"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2016.parquet",
+   "bytes": 1231737,
+   "sha256": "033892e60c7a1dc4"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2017.parquet",
+   "bytes": 1205996,
+   "sha256": "c326c11ebc633f53"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2018.parquet",
+   "bytes": 1210480,
+   "sha256": "a981f0208a806f66"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2019.parquet",
+   "bytes": 1210045,
+   "sha256": "9a9b30b6f382a7d2"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2020.parquet",
+   "bytes": 1187330,
+   "sha256": "d0ff6518b0a98940"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2021.parquet",
+   "bytes": 1195615,
+   "sha256": "abe95b65f080660b"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2022.parquet",
+   "bytes": 1190958,
+   "sha256": "81359f9dd9c8c318"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2023.parquet",
+   "bytes": 1216864,
+   "sha256": "fb29589b8755ddad"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2024.parquet",
+   "bytes": 1197215,
+   "sha256": "07cc62ced75af82d"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2025.parquet",
+   "bytes": 1169226,
+   "sha256": "29a50b9e7145f23f"
+  },
+  {
+   "path": "data/processed/monitor/district_series/SMAP/year=2026.parquet",
+   "bytes": 1239033,
+   "sha256": "09835537b670b80a"
+  },
+  {
+   "path": "data/processed/monitor/indices/evaporative_stress.parquet",
+   "bytes": 354111,
+   "sha256": "c7c3aeaed0f513bd"
+  },
+  {
+   "path": "data/processed/monitor/indices/lst.parquet",
+   "bytes": 336973,
+   "sha256": "54680a244d8e3b6d"
+  },
+  {
+   "path": "data/processed/monitor/indices/monsoon_departure.parquet",
+   "bytes": 3146332,
+   "sha256": "d6b9954203ee5139"
+  },
+  {
+   "path": "data/processed/monitor/indices/soil_moisture.parquet",
+   "bytes": 1578178,
+   "sha256": "61701dddc73121ea"
+  },
+  {
+   "path": "data/processed/monitor/indices/spi.parquet",
+   "bytes": 375501,
+   "sha256": "3339300964d28b52"
+  },
+  {
+   "path": "data/processed/monitor/indices/vegetation.parquet",
+   "bytes": 337956,
+   "sha256": "6732c846db02eae3"
+  },
+  {
+   "path": "data/processed/monitor/nowcast/district_today.parquet",
+   "bytes": 5908,
+   "sha256": "898883e526b97ab8"
+  },
+  {
+   "path": "data/processed/monitor/nowcast/district_today_daily.parquet",
+   "bytes": 18946,
+   "sha256": "8c2bd4825f2336f8"
+  },
+  {
+   "path": "data/processed/monitor/weather/ecmwf_forecast.parquet",
+   "bytes": 20665,
+   "sha256": "ed8e185aa87c3c9d"
+  },
+  {
+   "path": "data/processed/monitor/weather/ecmwf_forecast_archive.parquet",
+   "bytes": 34154,
+   "sha256": "545932650dd83240"
+  },
+  {
+   "path": "data/processed/monitor/weather/power.parquet",
+   "bytes": 6278235,
+   "sha256": "0ccc6352091705bf"
+  },
+  {
+   "path": "data/processed/monitor/weather/rain_chirps.parquet",
+   "bytes": 536024,
+   "sha256": "af873e02785f8cde"
+  },
+  {
+   "path": "data/processed/monitor/weather/rain_imd.parquet",
+   "bytes": 1445532,
+   "sha256": "af09d448869efca8"
+  },
+  {
+   "path": "data/processed/monitor/weather/rain_imd_extended.parquet",
+   "bytes": 1493385,
+   "sha256": "024aab4672e3c455"
+  },
+  {
+   "path": "data/processed/monitor/weather/temp_imd.parquet",
+   "bytes": 1795444,
+   "sha256": "bf20c6928f34046d"
+  },
+  {
+   "path": "data/processed/predict/district_drivers.json",
+   "bytes": 69928,
+   "sha256": "a0d1e8d762dc9442"
+  },
+  {
+   "path": "data/processed/predict/district_forecast.parquet",
+   "bytes": 8757,
+   "sha256": "ebbfcf712ae73ee4"
+  },
+  {
+   "path": "data/processed/soil/district_soilgrids.parquet",
+   "bytes": 39000,
+   "sha256": "de384c372d000ec6"
+  },
+  {
+   "path": "data/processed/soil/district_soil_water.parquet",
+   "bytes": 27327,
+   "sha256": "6fc5ddeba9d46e17"
+  },
+  {
+   "path": "data/processed/soil/district_soil_water_saxton_rawls.parquet",
+   "bytes": 33891,
+   "sha256": "03b1c7a8c85d9967"
+  },
+  {
+   "path": "data/processed/advisor/runs/d01.parquet",
+   "bytes": 35433,
+   "sha256": "c49e526495038a2f"
+  },
+  {
+   "path": "data/processed/advisor/runs/d02.parquet",
+   "bytes": 35142,
+   "sha256": "77f5448c686484ff"
+  },
+  {
+   "path": "data/processed/advisor/runs/d03.parquet",
+   "bytes": 35210,
+   "sha256": "e554f039d0dea867"
+  },
+  {
+   "path": "data/processed/advisor/runs/d04.parquet",
+   "bytes": 35250,
+   "sha256": "d82c1e6f92c80df7"
+  },
+  {
+   "path": "data/processed/advisor/runs/d05.parquet",
+   "bytes": 35218,
+   "sha256": "6a978993dfbc7314"
+  },
+  {
+   "path": "data/processed/advisor/runs/d06.parquet",
+   "bytes": 35071,
+   "sha256": "51e5c6d39de3895c"
+  },
+  {
+   "path": "data/processed/advisor/runs/d07.parquet",
+   "bytes": 35106,
+   "sha256": "93ad00eb85eaf8f6"
+  },
+  {
+   "path": "data/processed/advisor/runs/d08.parquet",
+   "bytes": 35391,
+   "sha256": "09a1d80bde604a18"
+  },
+  {
+   "path": "data/processed/advisor/runs/d09.parquet",
+   "bytes": 35307,
+   "sha256": "02a7a6ad3262da63"
+  },
+  {
+   "path": "data/processed/advisor/runs/d10.parquet",
+   "bytes": 34875,
+   "sha256": "e5306b150e5b54e0"
+  },
+  {
+   "path": "data/processed/advisor/runs/d11.parquet",
+   "bytes": 34860,
+   "sha256": "1f79178b5c12657f"
+  },
+  {
+   "path": "data/processed/advisor/runs/d12.parquet",
+   "bytes": 34959,
+   "sha256": "5c8aafe6d6c0bd88"
+  },
+  {
+   "path": "data/processed/advisor/runs/d13.parquet",
+   "bytes": 35366,
+   "sha256": "8692a5abdd1952d2"
+  },
+  {
+   "path": "data/processed/advisor/runs/d14.parquet",
+   "bytes": 34887,
+   "sha256": "acf4350d80b5fc8c"
+  },
+  {
+   "path": "data/processed/advisor/runs/d15.parquet",
+   "bytes": 35208,
+   "sha256": "92a0b941aa89a3ca"
+  },
+  {
+   "path": "data/processed/advisor/runs/d16.parquet",
+   "bytes": 34636,
+   "sha256": "661baae664394ad3"
+  },
+  {
+   "path": "data/processed/advisor/runs/d17.parquet",
+   "bytes": 34898,
+   "sha256": "77ba3ba8a60f464c"
+  },
+  {
+   "path": "data/processed/advisor/runs/d18.parquet",
+   "bytes": 31055,
+   "sha256": "9bd3cfbfebfb30e8"
+  },
+  {
+   "path": "data/processed/advisor/runs/d19.parquet",
+   "bytes": 33190,
+   "sha256": "ebcc5bbfdd8dea59"
+  },
+  {
+   "path": "data/processed/advisor/runs/d20.parquet",
+   "bytes": 34810,
+   "sha256": "97452981561628a8"
+  },
+  {
+   "path": "data/processed/advisor/runs/d21.parquet",
+   "bytes": 34733,
+   "sha256": "b191232e4da0c2ee"
+  },
+  {
+   "path": "data/processed/advisor/runs/d22.parquet",
+   "bytes": 34736,
+   "sha256": "f5223d662646c727"
+  },
+  {
+   "path": "data/processed/advisor/runs/d23.parquet",
+   "bytes": 34675,
+   "sha256": "b665148d4cfc8a17"
+  },
+  {
+   "path": "data/processed/advisor/runs/d24.parquet",
+   "bytes": 34233,
+   "sha256": "45aac8b6ab790bbf"
+  },
+  {
+   "path": "data/processed/advisor/runs/d25.parquet",
+   "bytes": 34919,
+   "sha256": "3e6580bebea108a7"
+  },
+  {
+   "path": "data/processed/advisor/runs/d26.parquet",
+   "bytes": 34688,
+   "sha256": "b91c371ffbab496b"
+  },
+  {
+   "path": "data/processed/advisor/runs/d27.parquet",
+   "bytes": 34094,
+   "sha256": "52c7a3b0d738ddf5"
+  },
+  {
+   "path": "data/processed/advisor/runs/d28.parquet",
+   "bytes": 33844,
+   "sha256": "f8b9b8a2ccb33760"
+  },
+  {
+   "path": "data/processed/advisor/runs/d29.parquet",
+   "bytes": 34818,
+   "sha256": "a8b6a45862efde7a"
+  },
+  {
+   "path": "data/processed/advisor/runs/d30.parquet",
+   "bytes": 34901,
+   "sha256": "497d48f9b288bd3c"
+  },
+  {
+   "path": "data/processed/advisor/runs/d31.parquet",
+   "bytes": 33436,
+   "sha256": "3ad2c94322fcbd19"
+  },
+  {
+   "path": "data/processed/advisor/runs/d32.parquet",
+   "bytes": 34837,
+   "sha256": "f6341b6385f537d7"
+  },
+  {
+   "path": "data/processed/advisor/runs/d33.parquet",
+   "bytes": 34401,
+   "sha256": "a7e5938933f100c7"
+  },
+  {
+   "path": "data/processed/advisor/runs/d34.parquet",
+   "bytes": 34812,
+   "sha256": "a9c81bcfcb649d82"
+  },
+  {
+   "path": "data/processed/advisor/runs/d35.parquet",
+   "bytes": 34858,
+   "sha256": "b52faf284de20e92"
+  },
+  {
+   "path": "data/processed/advisor/runs/d36.parquet",
+   "bytes": 35023,
+   "sha256": "9f55b0f2839aaa49"
+  },
+  {
+   "path": "data/interim/boundaries/maharashtra_districts.geojson",
+   "bytes": 2284021,
+   "sha256": "08cd1fbd286b55b0"
+  },
+  {
+   "path": "data/interim/boundaries/maharashtra_state.geojson",
+   "bytes": 3164259,
+   "sha256": "4a0b48b69524bcc4"
+  },
+  {
+   "path": "data/raw/plant_health/ipm_references/ipm/NIPHM_IPM_Soyabean.pdf",
+   "bytes": 1995214,
+   "sha256": "e9b86ca26849de28"
+  },
+  {
+   "path": "data/raw/plant_health/ipm_references/ipm/NIPHM_IPM_Cotton.pdf",
+   "bytes": 2123461,
+   "sha256": "5a507efe743b7f36"
+  },
+  {
+   "path": "data/raw/plant_health/ipm_references/ipm/NIPHM_IPM_Maize.pdf",
+   "bytes": 1716026,
+   "sha256": "14544b23523136d2"
+  },
+  {
+   "path": "data/raw/plant_health/ipm_references/ipm/NIPHM_IPM_Sorghum.pdf",
+   "bytes": 5408733,
+   "sha256": "d1c411d15cc19434"
+  },
+  {
+   "path": "data/raw/plant_health/ipm_references/ipm/NIPHM_IPM_Sunflower.pdf",
+   "bytes": 6484432,
+   "sha256": "59cf750c5c8cb6b8"
+  },
+  {
+   "path": "data/raw/plant_health/ipm_references/ipm/NIPHM_IPM_Wheat.pdf",
+   "bytes": 7024394,
+   "sha256": "3d030296a548f2ba"
+  },
+  {
+   "path": "data/raw/plant_health/ipm_references/ipm/NIPHM_IPM_Potato.pdf",
+   "bytes": 18615643,
+   "sha256": "945e25ae81052837"
+  },
+  {
+   "path": "data/raw/plant_health/ipm_references/ipm/NIPHM_IPM_Tomato.pdf",
+   "bytes": 7002024,
+   "sha256": "4eef1237a3b6a50c"
+  },
+  {
+   "path": "reports/monitor_logs/update_20261119T103703Z.json",
+   "bytes": 3336,
+   "sha256": "0a7645d17b4fcc01"
+  }
+ ]
+}

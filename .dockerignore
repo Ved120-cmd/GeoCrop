@@ -1,0 +1,25 @@
+# Keep the build context small: the image only needs code, models, the AquaCrop engine and deploy/runtime.
+.git
+.venv
+.env
+.env.*
+**/__pycache__
+**/*.pyc
+.pytest_cache
+.claude
+data/raw
+data/interim
+data/processed
+data/manifests
+datasets
+db
+resume
+reports
+frontend
+docs
+tests
+scripts
+simulator/aquacrop/official_src
+simulator/aquacrop/gui_ac73/**/*.exe
+simulator/aquacrop/gui_ac73/**/*.dll
+*.log

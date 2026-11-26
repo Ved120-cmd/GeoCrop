@@ -1,0 +1,36 @@
+# Render Blueprint: GeoCrop web app as a static site (the API runs on Railway; see docs/DEPLOY.md).
+services:
+  - type: web
+    runtime: static
+    name: geocrop-web
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    pullRequestPreviewsEnabled: false
+    envVars:
+      - key: NODE_VERSION
+        value: "24.4.1"
+      # The Railway API URL, e.g. https://geocrop-api-production.up.railway.app (no trailing slash). Set in the dashboard.
+      - key: VITE_API_BASE
+        sync: false
+      # No login yet: keep farmer profiles off on the public site.
+      - key: VITE_PROFILES_ENABLED
+        value: "false"
+    routes:
+      # single-page app: every path is served by index.html (React Router handles it)
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable

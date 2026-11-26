@@ -17,10 +17,19 @@ from geocrop.config import ROOT
 load_dotenv(ROOT / ".env")
 
 
+def configured() -> bool:
+    """True when some database is configured (local GEOCROP_DB_* or a hosted DATABASE_URL)."""
+    return bool(os.environ.get("DATABASE_URL") or os.environ.get("GEOCROP_DB_USER"))
+
+
 def db_url(admin: bool = False):
     """Connection URL. The API uses the least-privilege app login (GEOCROP_DB_APP_*, created by
-    scripts/db/create_app_role.py); only schema setup uses the admin/owner login (GEOCROP_DB_USER)."""
+    scripts/db/create_app_role.py); only schema setup uses the admin/owner login (GEOCROP_DB_USER).
+    A hosted DATABASE_URL (e.g. Railway PostgreSQL) is used when the GEOCROP_DB_* variables are absent."""
     e = os.environ
+    if not e.get("GEOCROP_DB_USER") and e.get("DATABASE_URL"):
+        u = e["DATABASE_URL"]
+        return u.replace("postgres://", "postgresql+psycopg://", 1).replace("postgresql://", "postgresql+psycopg://", 1)
     if admin or not e.get("GEOCROP_DB_APP_USER"):
         user, pw = e["GEOCROP_DB_USER"], e["GEOCROP_DB_PASSWORD"]
     else:
@@ -37,7 +46,9 @@ def admin_engine():
     return create_engine(db_url(admin=True), pool_pre_ping=True, future=True)
 
 
-engine = create_engine(db_url(), pool_pre_ping=True, future=True)
+# No database configured (e.g. a public deployment with profiles disabled): the API still starts; profile
+# routes are switched off in geocrop/api/main.py and nothing touches the engine.
+engine = create_engine(db_url(), pool_pre_ping=True, future=True) if configured() else None
 SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
 
 

@@ -24,6 +24,30 @@ app = FastAPI(title="GeoCrop Monitor API", version="0.1.0",
 from fastapi.middleware.cors import CORSMiddleware
 
 from geocrop.api.security import CLIENT_HEADER, CSRFMiddleware, SecurityHeadersMiddleware, allowed_origins  # noqa: E402
+import os  # noqa: E402
+
+from starlette.middleware.base import BaseHTTPMiddleware  # noqa: E402
+from starlette.responses import JSONResponse  # noqa: E402
+
+# Farmer profiles (name, phone, farm location) have no login yet, so a public deployment switches them off:
+# GEOCROP_PROFILES_ENABLED=0 -> /profiles and /farms answer 404 and no database is needed.
+PROFILES_ENABLED = os.environ.get("GEOCROP_PROFILES_ENABLED", "1").lower() not in ("0", "false", "no")
+
+
+class ProfilesSwitch(BaseHTTPMiddleware):
+    async def dispatch(self, request, call_next):
+        if not PROFILES_ENABLED and request.url.path.startswith(("/profiles", "/farms")):
+            return JSONResponse({"detail": "farmer profiles are disabled on this deployment"}, status_code=404)
+        return await call_next(request)
+
+
+@app.get("/features")
+def features():
+    """What this deployment offers (the web app hides switched-off features)."""
+    return {"profiles": PROFILES_ENABLED}
+
+
+app.add_middleware(ProfilesSwitch)
 
 # Order: added last = runs first. CORS answers preflights; CSRF then checks state-changing requests.
 app.add_middleware(SecurityHeadersMiddleware)
